@@ -1,9 +1,10 @@
+import { ContentLayout } from "../../../components/Layout"
 
 export const Schedule = () => {
   return (
-    <div>
-      <h2>Schedule</h2>
-      View your scheduled bookings here
-    </div>
+    <ContentLayout title="Schedule" subtitle="View Scheduled Bookings">
+      <>
+      </>
+    </ContentLayout>
   )
 }
