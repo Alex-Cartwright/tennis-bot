@@ -12,6 +12,7 @@ export const Booking = () => {
   return (
     <Box>
       <h2>Book A Court</h2>
+      <h3>Location</h3>
       <FormControl fullWidth>
         <InputLabel id="booking-location-label">Location</InputLabel>
         <Select
@@ -25,10 +26,13 @@ export const Booking = () => {
           ))}
         </Select>
       </FormControl>
-      <h3>Location</h3>
-      <DateCalendar />
-      <h3>Times</h3>
-      ....
+      {location && (
+        <>
+          <h3>Date</h3>
+          <DateCalendar />
+          <h3>Times</h3>
+        </>
+      )}
     </Box>
   )
 }

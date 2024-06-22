@@ -6,11 +6,13 @@ export type Location = {
 const locations = [
   {
     name: 'Islington',
-    url: ''
+    url: '',
+    times: []
   },
   {
     name: 'Lea Valley',
-    url: ''
+    url: '',
+    times: []
   }
 ]
 
