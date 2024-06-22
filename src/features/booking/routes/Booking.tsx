@@ -44,19 +44,18 @@ export const Booking = () => {
         <>
           <DateCalendar 
             value={date} 
-            // disablePast={true}
             minDate={dayjs().add(5, 'day')}
             maxDate={dayjs().add(1, 'year')}
             onChange={(newDate) => setDate(newDate)}
           />
           {availableTimes ? (
-            <Box sx={{display: 'flex', flexDirection: 'column'}}>
+            <Box sx={{display: 'flex', flexDirection: 'column', gap:2}}>
               <TimePicker
                 minTime={dayjs().set('hour', Math.min(...availableTimes))}
                 maxTime={dayjs().set('hour', Math.max(...availableTimes))}
               />
               <Button onClick={handleBooking}>
-                Confirm
+                Confirm Booking
               </Button>
             </Box>
           ) : null}
