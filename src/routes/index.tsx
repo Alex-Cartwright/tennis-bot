@@ -1,9 +1,11 @@
-import { useRoutes } from "react-router-dom"
+import { Outlet, useRoutes } from "react-router-dom"
+import { Scheduler } from "../features/scheduler"
 
 const App = () => {
   return (
     <div>
       <h1>Tennis Bot</h1>
+      <Outlet />
     </div>
   )
 
@@ -14,7 +16,10 @@ export const AppRoutes = () => {
   const routes = [
     {
       path: '/app',
-      element: <App />
+      element: <App />,
+      children: [
+        { path: 'scheduler', element: <Scheduler /> },
+      ]
     }
   ]
 
