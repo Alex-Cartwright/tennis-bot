@@ -1,17 +1,16 @@
-import { DateCalendar } from "@mui/x-date-pickers"
-import { fetchLocations } from "../api/fetchLocations"
-import { Button, FormControl, InputLabel, MenuItem, Select } from "@mui/material";
-import { useState } from "react";
+import { DateCalendar, TimePicker } from "@mui/x-date-pickers"
+import { Box, Button, FormControl, InputLabel, MenuItem, Select } from "@mui/material";
+import { useEffect, useState } from "react";
 import { ContentLayout } from "../../../components/Layout";
 import { requestBooking } from "../api/requestBooking";
 import dayjs from "dayjs";
+import { locations } from "../api/fetchLocations";
 
 export const Booking = () => {
 
-  const locations = fetchLocations();
-
-  const [location, setLocation] = useState('');
+  const [location, setLocation] = useState("");
   const [date, setDate] = useState(null);
+  const [availableTimes, setAvailableTimes] = useState<number[]>([]);
 
   const handleBooking = () => {
     if(location && date) {
@@ -21,9 +20,13 @@ export const Booking = () => {
     console.error("Booking failed, please select a location and date.")
   }
 
+  useEffect(() => {
+    const availableTimes = locations.filter(loc => loc.name === location)[0]?.times
+    setAvailableTimes(availableTimes)
+  }, [location])
+
   return (
     <ContentLayout title="Book A Court" subtitle="Schedule court bookings here">
-      <h3>Location</h3>
       <FormControl fullWidth>
         <InputLabel id="booking-location-label">Location</InputLabel>
         <Select
@@ -39,17 +42,24 @@ export const Booking = () => {
       </FormControl>
       {location && (
         <>
-          <h3>Date</h3>
           <DateCalendar 
             value={date} 
             // disablePast={true}
             minDate={dayjs().add(5, 'day')}
+            maxDate={dayjs().add(1, 'year')}
             onChange={(newDate) => setDate(newDate)}
           />
-          <h3>Times</h3>
-          <Button onClick={handleBooking}>
-            Confirm
-          </Button>
+          {availableTimes ? (
+            <Box sx={{display: 'flex', flexDirection: 'column'}}>
+              <TimePicker
+                minTime={dayjs().set('hour', Math.min(...availableTimes))}
+                maxTime={dayjs().set('hour', Math.max(...availableTimes))}
+              />
+              <Button onClick={handleBooking}>
+                Confirm
+              </Button>
+            </Box>
+          ) : null}
         </>
       )
       }

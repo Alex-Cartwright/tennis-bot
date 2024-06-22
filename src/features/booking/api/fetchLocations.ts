@@ -1,13 +1,16 @@
-export type Location = {
+type Location = {
   name: string
   url: string
+  times: number[]
 }
 
-const locations = [
+export const locations : Location[] = [
   {
     name: 'Islington',
-    url: '',
-    times: []
+    url: 'https://bookings.better.org.uk/location/islington-tennis-centre/tennis-court-outdoor/',
+    times: [
+      7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21
+    ]
   },
   {
     name: 'Lea Valley',
@@ -16,6 +19,6 @@ const locations = [
   }
 ]
 
-export const fetchLocations = () : Location[] => {
-  return locations
-}
+// export const fetchLocations = () : string[] => {
+//   return Object.keys(locations)
+// }
