@@ -1,7 +1,8 @@
 import { Outlet, useRoutes } from "react-router-dom"
-import { Scheduler } from "../features/scheduler"
 import { Home } from "../features/home"
 import { Navbar } from "../components/Navbar"
+import { Booking } from "../features/booking"
+import { Schedule } from "../features/schedule/routes/Schedule"
 
 export const AppRoutes = () => {
 
@@ -20,7 +21,8 @@ export const AppRoutes = () => {
       element: <App />,
       children: [
         { index: true, element: <Home /> },
-        { path: 'scheduler', element: <Scheduler /> },
+        { path: 'booking', element: <Booking /> },
+        { path: 'schedule', element: <Schedule />}
       ]
     }
   ]

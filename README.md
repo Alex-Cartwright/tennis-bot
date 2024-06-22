@@ -34,3 +34,8 @@ This file contains commands on how to interact with Firebase, so that I don't fo
 
 # Deploys firebase, run this when you want to deploy the app
 firebase deploy
+
+# Lists active sites
+firebase hosting:sites:list
+
+firebase hosting:sites:get <siteId>
