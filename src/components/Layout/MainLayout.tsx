@@ -6,8 +6,20 @@ type MainLayoutProps = {
 }
 
 export const MainLayout = ({ children } : MainLayoutProps) => {
-  return <Box>
-    <Navbar />
-    {children}
-  </Box>
+  const navbarHeight = '64px'
+
+  return (
+    <Box 
+      sx={{
+        height: '100vh',
+        display: 'flex',
+        flexDirection: 'column'
+      }}
+    >
+      <Navbar height={navbarHeight}/>
+      <Box sx={{marginTop: navbarHeight}}>
+        {children}
+      </Box>
+    </Box>
+  )
 }
