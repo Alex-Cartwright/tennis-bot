@@ -1,14 +1,15 @@
 package com.cartyac.tennisbot.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
 import java.util.UUID;
 
 @Entity
+@Table(name = "locations")
 public class Location {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private UUID id;
     private String name;
     private String url;
