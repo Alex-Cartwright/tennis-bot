@@ -1,8 +1,7 @@
-package com.cartyac.tennisbot.services;
+package com.cartyac.tennisbot.service;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -11,15 +10,12 @@ import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.select.Elements;
 
-import java.io.IOException;
 import java.nio.file.*;
+import java.time.Duration;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.concurrent.Executors;
-import java.util.concurrent.ScheduledExecutorService;
-import java.util.concurrent.TimeUnit;
 
 public class WebService {
 
@@ -41,7 +37,7 @@ public class WebService {
             driver.get(URL);
 
             // Wait for the date ribbon component to be present
-            WebDriverWait wait = new WebDriverWait(driver, 3);
+            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(3);
             wait.until(ExpectedConditions.presenceOfElementLocated(By.className("DateRibbonComponent__DatesWrapper-sc-p1q1bx-1")));
 
             // Parse the page content
