@@ -53,3 +53,7 @@ docker build -t tennis-bot:latest .
 ### Running
 docker run -p 8080:8080 tennis-bot:latest
 
+# In Development
+java -jar -Dspring.profiles.active=development your-app.jar
+# In Production
+java -jar -Dspring.profiles.active=production your-app.jar
