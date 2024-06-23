@@ -27,6 +27,12 @@ export const Navbar = ({height} : NavbarProps) => {
         >
           Schedule
         </Button>
+        <Button 
+          sx={{ my: 2, color: 'white', display: 'block' }}
+          onClick={() => navigate('/locations')}
+        >
+          Locations
+        </Button>
       </Toolbar>
     </AppBar>
   )
