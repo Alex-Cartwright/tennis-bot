@@ -40,3 +40,16 @@ password: password
 CREATE TABLE locations (    id UUID PRIMARY KEY,    name VARCHAR(255),    url VARCHAR(255));
 CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
 INSERT INTO locations (id, name, url) VALUES (uuid_generate_v4(), 'Islington', 'https://bookings.better.org.uk/location/islington-tennis-centre/tennis-court-outdoor/');
+
+# Dockerfile
+Contains the instructions to build the Docker image
+
+EXPOSE 8080: informs Docker that the container listens on the specified network ports at runtime.
+It doesn't actually publish the port to the host machine; it's a way to document the intended network port for the container. To make the port accessible on the host, you still need to use the -p flag with docker run, like so: -p 8080:8080.FROM ubuntu:latest
+
+### Building
+docker build -t tennis-bot:latest .
+
+### Running
+docker run -p 8080:8080 tennis-bot:latest
+
