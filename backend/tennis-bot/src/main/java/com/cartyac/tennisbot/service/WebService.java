@@ -37,7 +37,7 @@ public class WebService {
             driver.get(URL);
 
             // Wait for the date ribbon component to be present
-            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(3);
+            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(3));
             wait.until(ExpectedConditions.presenceOfElementLocated(By.className("DateRibbonComponent__DatesWrapper-sc-p1q1bx-1")));
 
             // Parse the page content
