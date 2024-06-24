@@ -64,7 +64,7 @@ tennis-bot-postgres
 password
 
 docker build -t gcr.io/tennis-bot-427320/tennis-bot:latest .
-docker push gcr.io/tennis-bot-427320/tennis-bot:latest .
+docker push gcr.io/tennis-bot-427320/tennis-bot:latest
 
 gcloud run deploy tennis-bot ^
 --image gcr.io/tennis-bot-427320/tennis-bot:latest ^
@@ -72,3 +72,16 @@ gcloud run deploy tennis-bot ^
 --platform managed ^
 --add-cloudsql-instances tennis-bot-427320:europe-west2:tennis-bot-postgres ^
 --env-vars-file env.yaml
+
+### Fuck
+i had a very long error where i could not connect to the remote SQL DB
+its because I did not rebuild my jar correctly so the wrong jar was being copied into the deployed container
+
+### Connencting to Cloud SQL
+set GOOGLE_APPLICATION_CREDENTIALS=C:\Users\Alex\Documents\Repos\tennis-bot\backend\credentials\tennis-bot-427320-d9365ffc068b.json
+cloud-sql-proxy.exe tennis-bot-427320:europe-west2:tennis-bot-postgres
+
+
+# Did I have to do this? I have a separate service account for the cloud sql proxy
+gcloud projects add-iam-policy-binding tennis-bot-427320  --member=serviceAccount:47201373461-compute@developer.gserviceaccount.com --role=roles/cloudsql.client
+

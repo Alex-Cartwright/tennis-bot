@@ -1,12 +1,12 @@
 
-P
-java:S1141="5Extract this nested try block into a separate method.(¡»¢üùÿÿÿÿ
-\
-java:S1075"ARefactor your code to get this URI from a customizable parameter.(ð«–¢üÿÿÿÿ
-m
-java:S3776"RRefactor this method to reduce its Cognitive Complexity from 16 to the 15 allowed.(ÇÛéˆùÿÿÿÿ
-E	java:S106H"+Replace this use of System.out by a logger.(ååüóýÿÿÿÿ
-@	java:S106M"+Replace this use of System.out by a logger.(€Â½Ù
-E	java:S106O"+Replace this use of System.out by a logger.(õÜÇÿûÿÿÿÿ
-@	java:S106S"+Replace this use of System.out by a logger.(Ú†ê‚
-E	java:S106]"+Replace this use of System.out by a logger.(ÏÆÉèúÿÿÿÿ
+v
+java:S1141="5Extract this nested try block into a separate method.(¡»¢üùÿÿÿÿJ$b7f6c9e5-dc09-4cc2-8e7c-5cf028d45dbe
+‚
+java:S1075"ARefactor your code to get this URI from a customizable parameter.(ð«–¢üÿÿÿÿJ$5ee0b08f-6f0c-417a-92e7-c4557de4eda4
+“
+java:S3776"RRefactor this method to reduce its Cognitive Complexity from 16 to the 15 allowed.(ÇÛéˆùÿÿÿÿJ$55078658-9f20-443a-afdc-78ed110a00c4
+k	java:S106H"+Replace this use of System.out by a logger.(ååüóýÿÿÿÿJ$0c0eb5bd-db55-4d79-985f-8f56676614a6
+f	java:S106M"+Replace this use of System.out by a logger.(€Â½ÙJ$0f0c2817-665f-4d70-ba2d-7cd22d687a00
+k	java:S106O"+Replace this use of System.out by a logger.(õÜÇÿûÿÿÿÿJ$0f6185f7-6e3d-4b39-a466-e984c06f7af7
+f	java:S106S"+Replace this use of System.out by a logger.(Ú†ê‚J$09a245d0-b09e-4cff-8b80-2241130e2a2b
+k	java:S106]"+Replace this use of System.out by a logger.(ÏÆÉèúÿÿÿÿJ$925edc87-910e-4238-959a-35779ebbbec6
