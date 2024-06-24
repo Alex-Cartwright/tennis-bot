@@ -57,3 +57,18 @@ docker run -p 8080:8080 tennis-bot:latest
 java -jar -Dspring.profiles.active=development your-app.jar
 # In Production
 java -jar -Dspring.profiles.active=production your-app.jar
+
+
+### Google Cloud
+tennis-bot-postgres
+password
+
+docker build -t gcr.io/tennis-bot-427320/tennis-bot:latest .
+docker push gcr.io/tennis-bot-427320/tennis-bot:latest .
+
+gcloud run deploy tennis-bot ^
+--image gcr.io/tennis-bot-427320/tennis-bot:latest ^
+--region europe-west2 ^
+--platform managed ^
+--add-cloudsql-instances tennis-bot-427320:europe-west2:tennis-bot-postgres ^
+--env-vars-file env.yaml

@@ -1,0 +1,12 @@
+
+P
+java:S1141="5Extract this nested try block into a separate method.(¡»¢üùÿÿÿÿ
+\
+java:S1075"ARefactor your code to get this URI from a customizable parameter.(ð«–¢üÿÿÿÿ
+m
+java:S3776"RRefactor this method to reduce its Cognitive Complexity from 16 to the 15 allowed.(ÇÛéˆùÿÿÿÿ
+E	java:S106H"+Replace this use of System.out by a logger.(ååüóýÿÿÿÿ
+@	java:S106M"+Replace this use of System.out by a logger.(€Â½Ù
+E	java:S106O"+Replace this use of System.out by a logger.(õÜÇÿûÿÿÿÿ
+@	java:S106S"+Replace this use of System.out by a logger.(Ú†ê‚
+E	java:S106]"+Replace this use of System.out by a logger.(ÏÆÉèúÿÿÿÿ

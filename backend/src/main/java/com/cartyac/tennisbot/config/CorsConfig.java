@@ -26,8 +26,7 @@ public class CorsConfig {
         String env = System.getProperty("spring.profiles.active", "development");
         System.out.println("Environment: " + env);
         if ("production".equals(env)) {
-            //TODO fill this in
-            return new String[]{"https://myfrontend.com"}; // Production frontend URL
+            return new String[]{"https://tennis-bot-2e567.firebaseapp.com/"}; // Production frontend URL
         }
         return new String[]{"http://localhost:5173"}; // Development frontend URL
     }

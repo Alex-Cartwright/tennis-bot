@@ -8,6 +8,7 @@ WORKDIR /app
 COPY target/tennis-bot-0.0.1-SNAPSHOT.jar app.jar
 
 # Make port 8080 available to the world outside this container
+ENV PORT 8080
 EXPOSE 8080
 
 # Run the jar file
