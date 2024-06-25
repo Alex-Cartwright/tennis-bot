@@ -27,3 +27,5 @@ u
 Ebackend/src/main/java/com/cartyac/tennisbot/TennisBotApplication.java,8\3\831353e3814ff348305e5daa16e23aa0458d4a3a
 q
 Abackend/src/main/java/com/cartyac/tennisbot/config/WebConfig.java,b\a\baa83f6d898fedc7caebcb861bfd35d711a1c7bd
+o
+?backend/src/main/java/com/cartyac/tennisbot/model/Location.java,d\a\da7c61ff8816e1326c0cb6b63b12f0fe44869a96
