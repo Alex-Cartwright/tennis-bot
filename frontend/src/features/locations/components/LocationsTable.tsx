@@ -48,11 +48,6 @@ export const LocationsTable = ({ locations }: LocationsTableProps) => {
     }
   }, [newLocation, clearForm]);
 
-  const handleChange = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
-    const { name, value } = e.target;
-    setNewLocation((prev) => ({ ...prev, [name]: value }));
-  }, []);
-
   const startEditing = useCallback((id: string) => {
     setIsEditing(id);
     setIsAdding(false);
@@ -97,7 +92,7 @@ export const LocationsTable = ({ locations }: LocationsTableProps) => {
                       label="Name"
                       variant="outlined"
                       value={editLocation.name}
-                      onChange={handleChange}
+                      onChange={(e) => setEditLocation({ ...editLocation, name: e.target.value })}
                       sx={{ display: "flex" }}
                     />
                   </TableCell>
@@ -107,7 +102,7 @@ export const LocationsTable = ({ locations }: LocationsTableProps) => {
                       label="URL"
                       variant="outlined"
                       value={editLocation.url}
-                      onChange={handleChange}
+                      onChange={(e) => setEditLocation({ ...editLocation, url: e.target.value })}
                       sx={{ display: "flex" }}
                     />
                   </TableCell>
@@ -143,7 +138,7 @@ export const LocationsTable = ({ locations }: LocationsTableProps) => {
                   label="Name"
                   variant="outlined"
                   value={newLocation.name}
-                  onChange={handleChange}
+                  onChange={(e) => setNewLocation({ ...editLocation, name: e.target.value })}
                   sx={{ display: "flex" }}
                 />
               </TableCell>
@@ -153,7 +148,7 @@ export const LocationsTable = ({ locations }: LocationsTableProps) => {
                   label="URL"
                   variant="outlined"
                   value={newLocation.url}
-                  onChange={handleChange}
+                  onChange={(e) => setNewLocation({ ...editLocation, url: e.target.value })}
                   sx={{ display: "flex" }}
                 />
               </TableCell>
