@@ -10,14 +10,16 @@ import { Location } from "../types";
 import { Button, TextField } from "@mui/material";
 import { addLocation, AddLocationDTO } from "../api/addLocation";
 import { putLocation } from "../api/putLocation";
+import { deleteLocation } from "../api/deleteLocation";
 
 type LocationsTableProps = {
   locations: Location[];
+  fetchLoctions: () => void;
 };
 
-export const LocationsTable = ({ locations }: LocationsTableProps) => {
+export const LocationsTable = ({ locations, fetchLoctions }: LocationsTableProps) => {
   const [isAdding, setIsAdding] = useState(false);
-  const [isEditing, setIsEditing] = useState<string>("");
+  const [isEditingId, setIsEditingId] = useState<string>("");
   const [newLocation, setNewLocation] = useState<AddLocationDTO>({
     name: "",
     url: "",
@@ -43,18 +45,34 @@ export const LocationsTable = ({ locations }: LocationsTableProps) => {
 
   const addLocationRequest = useCallback(() => {
     if (newLocation.name && newLocation.url) {
-      addLocation(newLocation);
-      clearForm();
+      addLocation(newLocation).then(() => {
+        clearForm();
+        fetchLoctions();
+      })
+      .catch((error) => {
+        console.error(error);
+      }
+      );
     }
-  }, [newLocation, clearForm]);
+  }, [newLocation, clearForm, fetchLoctions]);
 
-  const startEditing = useCallback((id: string) => {
-    setIsEditing(id);
-    setIsAdding(false);
+  const deleteLocationRequest = useCallback((id: string) => {
+    deleteLocation(id)
+    .then(() => fetchLoctions())
+    .catch((error) => {
+      console.error(error);
+    });
+  }, [fetchLoctions]);
+
+  const startAdding = useCallback(() => {
+    setIsAdding(true);
+    setIsEditingId("");
   }, []);
 
-  const deleteLocation = useCallback((id: string) => {
-    deleteLocation(id);
+  const startEditing = useCallback((id: string, name: string, url: string) => {
+    setIsEditingId(id);
+    setIsAdding(false);
+    setEditLocation({ name, url });
   }, []);
 
   const saveEdit = useCallback(
@@ -63,11 +81,6 @@ export const LocationsTable = ({ locations }: LocationsTableProps) => {
     },
     [editLocation]
   );
-
-  const startAdding = useCallback(() => {
-    setIsAdding(true);
-    setIsEditing("");
-  }, []);
 
   const rows = useMemo(() => locations.map(mapLocation), [locations, mapLocation]);
 
@@ -84,7 +97,7 @@ export const LocationsTable = ({ locations }: LocationsTableProps) => {
         <TableBody>
           {rows.map((row) => (
             <TableRow key={row.id}>
-              {isEditing === row.id ? (
+              {isEditingId === row.id ? (
                 <>
                   <TableCell>
                     <TextField
@@ -107,7 +120,7 @@ export const LocationsTable = ({ locations }: LocationsTableProps) => {
                     />
                   </TableCell>
                   <TableCell>
-                    <Button onClick={() => startEditing("")}>Cancel</Button>
+                    <Button onClick={() => setIsEditingId("")}>Cancel</Button>
                     <Button onClick={() => saveEdit(row.id)}>Confirm</Button>
                   </TableCell>
                 </>
@@ -116,8 +129,8 @@ export const LocationsTable = ({ locations }: LocationsTableProps) => {
                   <TableCell>{row.name}</TableCell>
                   <TableCell>{row.url}</TableCell>
                   <TableCell>
-                    <Button onClick={() => startEditing(row.id)}>Edit</Button>
-                    <Button onClick={() => deleteLocation(row.id)}>
+                    <Button onClick={() => startEditing(row.id, row.name, row.url)}>Edit</Button>
+                    <Button onClick={() => deleteLocationRequest(row.id)}>
                       Delete
                     </Button>
                   </TableCell>
@@ -125,12 +138,7 @@ export const LocationsTable = ({ locations }: LocationsTableProps) => {
               )}
             </TableRow>
           ))}
-          <TableRow>
-            <TableCell colSpan={3} align="center">
-              <Button onClick={startAdding}>Add Location</Button>
-            </TableCell>
-          </TableRow>
-          {isAdding && (
+          {isAdding ? (
             <TableRow>
               <TableCell>
                 <TextField
@@ -138,7 +146,7 @@ export const LocationsTable = ({ locations }: LocationsTableProps) => {
                   label="Name"
                   variant="outlined"
                   value={newLocation.name}
-                  onChange={(e) => setNewLocation({ ...editLocation, name: e.target.value })}
+                  onChange={(e) => setNewLocation({ ...newLocation, name: e.target.value })}
                   sx={{ display: "flex" }}
                 />
               </TableCell>
@@ -148,7 +156,7 @@ export const LocationsTable = ({ locations }: LocationsTableProps) => {
                   label="URL"
                   variant="outlined"
                   value={newLocation.url}
-                  onChange={(e) => setNewLocation({ ...editLocation, url: e.target.value })}
+                  onChange={(e) => setNewLocation({ ...newLocation, url: e.target.value })}
                   sx={{ display: "flex" }}
                 />
               </TableCell>
@@ -157,7 +165,13 @@ export const LocationsTable = ({ locations }: LocationsTableProps) => {
                 <Button onClick={clearForm}>Cancel</Button>
               </TableCell>
             </TableRow>
-          )}
+          ) : 
+          <TableRow>
+            <TableCell colSpan={3} align="center">
+              <Button onClick={startAdding}>Add Location</Button>
+            </TableCell>
+          </TableRow>
+          }
         </TableBody>
       </Table>
     </TableContainer>

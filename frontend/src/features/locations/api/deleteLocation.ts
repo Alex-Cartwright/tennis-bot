@@ -1,6 +1,6 @@
-import instance from "../../../lib/axios"
+import axios from "@/lib/axios";
 
 export const deleteLocation = async (id: string) => {
-  const response = await instance.delete(`/locations/${id}`);
+  const response = await axios.delete(`/locations/${id}`);
   return response.data;
 }

@@ -5,7 +5,7 @@
 
 
 
-### PostgreSQL
+### PostgreSQL (Running local - now we don't need this as we have a container)
 I am running a PostgreSQL server locally.
 
 I need to persist this to the cloud.
@@ -33,6 +33,13 @@ password: password
 
 \c tennis_bot
 
+# Development
+To run the backend development server, use the docker-compose.yml file. To start the server, run the following command:
+docker-compose up --build
+
+This will expose the backend to traffic from the local machine on port 8080.
+
+# Production
 
 
 

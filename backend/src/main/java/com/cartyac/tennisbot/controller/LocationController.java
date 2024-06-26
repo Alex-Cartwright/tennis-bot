@@ -31,6 +31,12 @@ public class LocationController {
         return locationService.save(location);
     }
 
+    @PutMapping("/{id}")
+    public Location updateLocation(@PathVariable UUID id, @RequestBody Location location) {
+        location.setId(id);
+        return locationService.save(location);
+    }
+
     @DeleteMapping("/{id}")
     public void deleteLocation(@PathVariable UUID id) {
         locationService.deleteById(id);
