@@ -12,8 +12,12 @@ import java.util.UUID;
 @RequestMapping("/schedule")
 public class ScheduleController {
 
+    private final ScheduleService scheduleService;
+
     @Autowired
-    private ScheduleService scheduleService;
+    public ScheduleController(ScheduleService scheduleService) {
+        this.scheduleService = scheduleService;
+    }
 
     @GetMapping
     public List<ScheduledBooking> getAllScheduledBookings() {

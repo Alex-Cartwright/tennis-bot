@@ -6,9 +6,9 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
-import { Location } from "../types";
+import { Location, LocationDTO } from "../types";
 import { Button, TextField } from "@mui/material";
-import { addLocation, AddLocationDTO } from "../api/addLocation";
+import { addLocation } from "../api/addLocation";
 import { putLocation } from "../api/putLocation";
 import { deleteLocation } from "../api/deleteLocation";
 
@@ -20,11 +20,11 @@ type LocationsTableProps = {
 export const LocationsTable = ({ locations, fetchLoctions }: LocationsTableProps) => {
   const [isAdding, setIsAdding] = useState(false);
   const [isEditingId, setIsEditingId] = useState<string>("");
-  const [newLocation, setNewLocation] = useState<AddLocationDTO>({
+  const [newLocation, setNewLocation] = useState<LocationDTO>({
     name: "",
     url: "",
   });
-  const [editLocation, setEditLocation] = useState<AddLocationDTO>({
+  const [editLocation, setEditLocation] = useState<LocationDTO>({
     name: "",
     url: "",
   });
