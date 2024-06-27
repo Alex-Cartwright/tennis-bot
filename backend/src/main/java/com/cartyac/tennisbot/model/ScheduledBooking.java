@@ -1,6 +1,7 @@
 package com.cartyac.tennisbot.model;
 
 import jakarta.persistence.*;
+import lombok.Data;
 
 import java.time.OffsetDateTime;
 import java.util.UUID;
