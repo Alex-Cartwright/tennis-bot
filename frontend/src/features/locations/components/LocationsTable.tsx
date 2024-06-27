@@ -6,11 +6,12 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
-import { Location, LocationDTO } from "../types";
+import { LocationDTO } from "../types";
 import { Button, TextField } from "@mui/material";
 import { addLocation } from "../api/addLocation";
 import { putLocation } from "../api/putLocation";
 import { deleteLocation } from "../api/deleteLocation";
+import { Location } from "@/types";
 
 type LocationsTableProps = {
   locations: Location[];
@@ -82,7 +83,7 @@ export const LocationsTable = ({ locations, fetchLoctions }: LocationsTableProps
     [editLocation]
   );
 
-  const rows = useMemo(() => locations.map(mapLocation), [locations, mapLocation]);
+  const rows = useMemo(() => locations?.map(mapLocation), [locations, mapLocation]);
 
   return (
     <TableContainer component={Paper}>
@@ -95,7 +96,7 @@ export const LocationsTable = ({ locations, fetchLoctions }: LocationsTableProps
           </TableRow>
         </TableHead>
         <TableBody>
-          {rows.map((row) => (
+          {rows?.map((row) => (
             <TableRow key={row.id}>
               {isEditingId === row.id ? (
                 <>
