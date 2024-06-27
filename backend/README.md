@@ -48,6 +48,15 @@ CREATE TABLE locations (    id UUID PRIMARY KEY,    name VARCHAR(255),    url VA
 CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
 INSERT INTO locations (id, name, url) VALUES (uuid_generate_v4(), 'Islington', 'https://bookings.better.org.uk/location/islington-tennis-centre/tennis-court-outdoor/');
 
+CREATE TYPE booking_status AS ENUM ('PENDING', 'CONFIRMED', 'CANCELLED', 'FAILED');
+CREATE TABLE scheduled_bookings (
+    id UUID PRIMARY KEY,
+    location UUID REFERENCES locations(id) ON DELETE CASCADE ON UPDATE CASCADE,
+    booking_time TIMESTAMPTZ NOT NULL,
+    status booking_status NOT NULL
+);
+
+
 # Dockerfile
 Contains the instructions to build the Docker image
 
