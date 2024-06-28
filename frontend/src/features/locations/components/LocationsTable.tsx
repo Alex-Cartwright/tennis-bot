@@ -12,52 +12,24 @@ import { putLocation } from "../api/putLocation";
 import { deleteLocation } from "../api/deleteLocation";
 import { Location } from "@/types";
 import { CANCELLED_ADDING, locationsReducer, LocationsTableState, RESET_UI, SET_EDIT_LOCATION, SET_EDIT_LOCATION_NAME, SET_EDIT_LOCATION_URL, SET_NEW_LOCATION_NAME, SET_NEW_LOCATION_URL, STARTED_ADDING, STARTED_EDITING } from "../reducers/locationsReducer";
+import { useLocationsTable } from "../hooks/useLocationsTable";
 
 type LocationsTableProps = {
   locations: Location[];
   fetchLocations: () => void;
 };
 
-const initialState: LocationsTableState = {
-  isAdding: false,
-  isEditingId: "",
-  newLocation: {name: "", url: ""},
-  editLocation: {name: "", url: ""},
-}
-
 export const LocationsTable = ({ locations, fetchLocations }: LocationsTableProps) => {
-  const [state, dispatch] = useReducer(locationsReducer, initialState)
-  const {isAdding, isEditingId, newLocation, editLocation} = state;
 
-  const mapLocation = useCallback(
-    (location: Location) => ({
-      name: location.name,
-      id: location.id,
-      url: location.url,
-    }),
-    []
-  );
-
-  const addLocationRequest = useCallback(() => {
-    if (newLocation.name && newLocation.url) {
-      addLocation(newLocation).then(() => {
-        dispatch({type: RESET_UI})
-        fetchLocations();
-      })
-      .catch((error) => {
-        console.error(error);
-      }
-      );
-    }
-  }, [newLocation, fetchLocations]);
-
-  const deleteLocationRequest = useCallback((id: string) => {
-    deleteLocation(id)
-    .then(() => fetchLocations())
-    .catch((error) => {
-      console.error(error);
-    });
-  }, [fetchLocations]);
+  const { 
+    addLocationRequest,
+    deleteLocationRequest,
+    isAdding,
+    isEditingId,
+    newLocation,
+    editLocation,
+    dispatch
+  } = useLocationsTable()
 
   const saveEdit = useCallback(
     (id: string) => {
@@ -65,8 +37,6 @@ export const LocationsTable = ({ locations, fetchLocations }: LocationsTableProp
     },
     [editLocation]
   );
-
-  const rows = useMemo(() => locations?.map(mapLocation), [locations, mapLocation]);
 
   return (
     <TableContainer component={Paper}>
@@ -79,7 +49,7 @@ export const LocationsTable = ({ locations, fetchLocations }: LocationsTableProp
           </TableRow>
         </TableHead>
         <TableBody>
-          {rows?.map((row) => (
+          {locations?.map((row) => (
             <TableRow key={row.id}>
               {isEditingId === row.id ? (
                 <>
