@@ -1,3 +1,16 @@
+import { handleActions, Action } from "redux-actions";
+import {
+  RESET_UI,
+  STARTED_ADDING,
+  CANCELLED_ADDING,
+  STARTED_EDITING,
+  SET_NEW_LOCATION_NAME,
+  SET_NEW_LOCATION_URL,
+  SET_EDIT_LOCATION_NAME,
+  SET_EDIT_LOCATION_URL,
+  LocationsPayloadType,
+  StartedEditingPayload,
+} from "../actions/actions";
 import { LocationDTO } from "../types";
 
 export type LocationsTableState = {
@@ -7,85 +20,50 @@ export type LocationsTableState = {
   editLocation: LocationDTO
 }
 
-type Action = {
-  type: string,
-  payload: any
-}
+export const initialState: LocationsTableState = {
+  isAdding: false,
+  isEditingId: "",
+  newLocation: { name: "", url: "" },
+  editLocation: { name: "", url: "" },
+};
 
-export const locationsReducer = (state: LocationsTableState, action: Action) : LocationsTableState => {
-  switch(action.type){
-    case STARTED_ADDING:
+export const locationsReducer = handleActions<LocationsTableState, LocationsPayloadType>(
+  {
+    [RESET_UI]: () => initialState,
+    [STARTED_ADDING]: (state) => ({ ...state, isAdding: true }),
+    [CANCELLED_ADDING]: (state) => ({ ...state, isAdding: false }),
+    [STARTED_EDITING]: (state, action: Action<LocationsPayloadType>) => {
+      const { id, name, url } = action.payload as StartedEditingPayload;
       return {
         ...state,
-        isAdding: true,
-        isEditingId: ""
+        isEditingId: id,
+        editLocation: { name, url }
       };
-    case CANCELLED_ADDING:
-      return {
+    },
+    [SET_NEW_LOCATION_NAME]: (state, action) => (
+      {
         ...state,
-        isAdding: false,
-        newLocation: {
-          name: "",
-          url: ""
-        }
+        newLocation: {...state.newLocation, name: action.payload as string}
       }
-    case STARTED_EDITING:
-      return {
+    ),
+    [SET_NEW_LOCATION_URL]: (state, action) => (
+      {
         ...state,
-        isAdding: false,
-        isEditingId: action.payload.id,
-        editLocation: {
-          name: action.payload.name,
-          url: action.payload.url
-        }
+        newLocation: {...state.newLocation, url: action.payload as string}
       }
-    case SET_NEW_LOCATION_NAME:
-      return {
+    ),
+    [SET_EDIT_LOCATION_NAME]: (state, action) => (
+      {
         ...state,
-        newLocation: {
-          ...state.newLocation,
-          name: action.payload
-        }
+        editLocation: {...state.editLocation, name: action.payload as string}
       }
-    case SET_NEW_LOCATION_URL:
-      return {
+    ),
+    [SET_EDIT_LOCATION_URL]: (state, action) => (
+      {
         ...state,
-        newLocation: {
-          ...state.newLocation,
-          url: action.payload
-        }
+        editLocation: {...state.editLocation, url: action.payload as string}
       }
-    case SET_EDIT_LOCATION_NAME:
-      return {
-        ...state,
-        editLocation: {
-          ...state.editLocation,
-          name: action.payload
-        }
-      }
-    case SET_EDIT_LOCATION_URL:
-      return {
-        ...state,
-        editLocation: {
-          ...state.editLocation,
-          url: action.payload
-        }
-      }
-    case RESET_UI:
-      return {
-        ...state,
-        isAdding: false,
-        isEditingId: ""
-      }
-    default: return state;
-  }
-}
-
-export const STARTED_ADDING = "STARTED_ADDING";
-export const CANCELLED_ADDING = "CANCELLED_ADDING";
-export const STARTED_EDITING = "STARTED_EDITING";
-export const SET_NEW_LOCATION_NAME = "SET_NEW_LOCATION_NAME";
-export const SET_NEW_LOCATION_URL = "SET_NEW_LOCATION_URL";
-export const SET_EDIT_LOCATION_NAME = "SET_EDIT_LOCATION_NAME";
-export const SET_EDIT_LOCATION_URL = "SET_EDIT_LOCATION_URL";
-export const RESET_UI = "RESET_UI";
+    )
+  },
+  initialState
+);

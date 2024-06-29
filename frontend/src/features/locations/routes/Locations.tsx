@@ -17,7 +17,7 @@ export const Locations = () => {
 
   return (
     <ContentLayout title="Locations" subtitle="View Locations">
-      <LocationsTable locations={locations} fetchLocations={refreshLocations}/>
+      <LocationsTable locations={locations} setLocations={setLocations}/>
     </ContentLayout>
   )
 }
