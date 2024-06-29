@@ -41,12 +41,14 @@ export const useLocationsTable = () => {
     }
   }, [setLocations, locations]);
 
-  const saveEdit = useCallback(
-    (id: string) => {
-      putLocation({ ...editLocation, id });
-    },
-    [editLocation]
-  );
+  const saveEdit = useCallback(async (id: string) => {
+    try {
+      const response = await putLocation({ ...editLocation, id });
+      setLocations(locations.map((location) => location.id === id ? response : location));
+    } catch (error) {
+      console.error(error);
+    }
+  }, [editLocation, locations, setLocations]);
 
   return {
     addLocationRequest,

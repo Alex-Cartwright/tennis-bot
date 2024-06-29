@@ -12,10 +12,10 @@ import { cancelledAdding, setEditLocationName, setEditLocationUrl, setNewLocatio
 
 type LocationsTableProps = {
   locations: Location[];
-  setLocations: (locations: Location[]) => void;
+  refreshLocations: () => void;
 };
 
-export const LocationsTable = ({ locations, setLocations }: LocationsTableProps) => {
+export const LocationsTable = ({ locations, refreshLocations }: LocationsTableProps) => {
   const {
     addLocationRequest,
     deleteLocationRequest,
@@ -25,7 +25,7 @@ export const LocationsTable = ({ locations, setLocations }: LocationsTableProps)
     editLocation,
     dispatch,
     saveEdit
-  } = useLocationsTable({locations, setLocations});
+  } = useLocationsTable({locations, refreshLocations});
 
   return (
     <TableContainer component={Paper}>
