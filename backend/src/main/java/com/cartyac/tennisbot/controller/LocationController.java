@@ -12,8 +12,12 @@ import java.util.UUID;
 @RequestMapping("/locations")
 public class LocationController {
 
+    private final LocationService locationService;
+
     @Autowired
-    private LocationService locationService;
+    public LocationController(LocationService locationService) {
+        this.locationService = locationService;
+    }
 
     @GetMapping
     public List<Location> getAllLocations() {

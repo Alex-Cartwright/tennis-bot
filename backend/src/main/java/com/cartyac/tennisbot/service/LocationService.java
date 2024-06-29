@@ -11,8 +11,12 @@ import java.util.UUID;
 @Service
 public class LocationService {
 
+    private final LocationRepository locationRepository;
+
     @Autowired
-    private LocationRepository locationRepository;
+    public LocationService(LocationRepository locationRepository) {
+        this.locationRepository = locationRepository;
+    }
 
     public List<Location> findAll(){
         return locationRepository.findAll();

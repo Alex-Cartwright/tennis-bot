@@ -6,26 +6,29 @@ import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import { Button, TextField } from "@mui/material";
-import { Location } from "@/types";
 import { useLocationsTable } from "../hooks/useLocationsTable";
-import { cancelledAdding, setEditLocationName, setEditLocationUrl, setNewLocationName, setNewLocationUrl, startedAdding, startedEditing } from "../actions/actions";
+import {
+  cancelledAdding,
+  resetUI,
+  setEditLocationName,
+  setEditLocationUrl,
+  setNewLocationName,
+  setNewLocationUrl,
+  startedAdding,
+  startedEditing,
+} from "../actions/actions";
+import { useLocations } from "@/hooks/useLocations";
 
-type LocationsTableProps = {
-  locations: Location[];
-  refreshLocations: () => void;
-};
-
-export const LocationsTable = ({ locations, refreshLocations }: LocationsTableProps) => {
+export const LocationsTable = () => {
+  const { locations } = useLocations();
   const {
     addLocationRequest,
     deleteLocationRequest,
-    isAdding,
-    isEditingId,
-    newLocation,
-    editLocation,
     dispatch,
-    saveEdit
-  } = useLocationsTable({locations, refreshLocations});
+    saveEdit,
+    state
+  } = useLocationsTable();
+  const { isAdding, isEditingId, newLocation, editLocation } = state;
 
   return (
     <TableContainer component={Paper}>
@@ -67,9 +70,7 @@ export const LocationsTable = ({ locations, refreshLocations }: LocationsTablePr
                     />
                   </TableCell>
                   <TableCell>
-                    <Button
-                      onClick={() => dispatch(cancelledAdding())}
-                    >
+                    <Button onClick={() => dispatch(resetUI())}>
                       Cancel
                     </Button>
                     <Button onClick={() => saveEdit(row.id)}>Confirm</Button>
@@ -87,7 +88,8 @@ export const LocationsTable = ({ locations, refreshLocations }: LocationsTablePr
                             id: row.id,
                             name: row.name,
                             url: row.url,
-                        }))
+                          })
+                        )
                       }
                     >
                       Edit
@@ -108,9 +110,7 @@ export const LocationsTable = ({ locations, refreshLocations }: LocationsTablePr
                   label="Name"
                   variant="outlined"
                   value={newLocation.name}
-                  onChange={(e) =>
-                    dispatch(setNewLocationName(e.target.value))
-                  }
+                  onChange={(e) => dispatch(setNewLocationName(e.target.value))}
                   sx={{ display: "flex" }}
                 />
               </TableCell>
@@ -120,9 +120,7 @@ export const LocationsTable = ({ locations, refreshLocations }: LocationsTablePr
                   label="URL"
                   variant="outlined"
                   value={newLocation.url}
-                  onChange={(e) =>
-                    dispatch(setNewLocationUrl(e.target.value))
-                  }
+                  onChange={(e) => dispatch(setNewLocationUrl(e.target.value))}
                   sx={{ display: "flex" }}
                 />
               </TableCell>

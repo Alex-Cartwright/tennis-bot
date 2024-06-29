@@ -9,8 +9,18 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 @Configuration
 public class WebConfig implements WebMvcConfigurer {
 
+    private static final String[] ALLOWED_DEV_ORIGINS = new String[]{"http://localhost:5173"};
+    private static final String[] ALLOWED_PRODUCTION_ORIGINS = new String[]{
+            "https://tennis-bot-2e567.firebaseapp.com",
+            "https://tennis-bot-2e567.web.app"
+    };
+
+    private final Environment env;
+
     @Autowired
-    private Environment env;
+    public WebConfig(Environment env) {
+        this.env = env;
+    }
 
     @Override
     public void addCorsMappings(CorsRegistry registry) {
@@ -23,10 +33,9 @@ public class WebConfig implements WebMvcConfigurer {
 
     private String[] getAllowedOrigins() {
         String envProfile = env.getProperty("spring.profiles.active", "development");
-        System.out.println("Environment: " + envProfile);
         if ("production".equals(envProfile)) {
-            return new String[]{"https://tennis-bot-2e567.firebaseapp.com", "https://tennis-bot-2e567.web.app"}; // Production frontend URL
+            return ALLOWED_PRODUCTION_ORIGINS;
         }
-        return new String[]{"http://localhost:5173"}; // Development frontend URL
+        return ALLOWED_DEV_ORIGINS;
     }
 }

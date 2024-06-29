@@ -30,12 +30,13 @@ export const initialState: LocationsTableState = {
 export const locationsReducer = handleActions<LocationsTableState, LocationsPayloadType>(
   {
     [RESET_UI]: () => initialState,
-    [STARTED_ADDING]: (state) => ({ ...state, isAdding: true }),
+    [STARTED_ADDING]: (state) => ({ ...state, isAdding: true, isEditingId: ""}),
     [CANCELLED_ADDING]: (state) => ({ ...state, isAdding: false }),
     [STARTED_EDITING]: (state, action: Action<LocationsPayloadType>) => {
       const { id, name, url } = action.payload as StartedEditingPayload;
       return {
         ...state,
+        isAdding: false,
         isEditingId: id,
         editLocation: { name, url }
       };
