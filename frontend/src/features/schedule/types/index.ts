@@ -1,6 +1,15 @@
+import { Location } from "@/types";
+
 export type ScheduledBooking = {
-  id: number;
-  date: string;
-  location: string;
-  user: string;
+  id: string;
+  bookingTime: string;
+  location: Location;
+  status: BookingStatus;
 };
+
+export enum BookingStatus {
+  PENDING,
+  CONFIRMED,
+  CANCELLED,
+  FAILED
+}

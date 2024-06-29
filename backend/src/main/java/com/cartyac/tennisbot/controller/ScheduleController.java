@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.UUID;
 
 @RestController
-@RequestMapping("/schedule")
+@RequestMapping("/scheduled_bookings")
 public class ScheduleController {
 
     private final ScheduleService scheduleService;

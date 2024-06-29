@@ -56,6 +56,10 @@ CREATE TABLE scheduled_bookings (
     status booking_status NOT NULL
 );
 
+INSERT INTO scheduled_bookings (id, location, booking_time, status)
+VALUES (uuid_generate_v4(), '49784527-8117-4aab-b7d8-cb5f2c2834be', '2024-06-29T10:15:30+00:00', 'PENDING');
+
+
 
 # Dockerfile
 Contains the instructions to build the Docker image

@@ -11,8 +11,12 @@ import java.util.UUID;
 @Service
 public class ScheduleService {
 
+    private final ScheduleRepository scheduleRepository;
+
     @Autowired
-    private ScheduleRepository scheduleRepository;
+    public ScheduleService(ScheduleRepository scheduleRepository) {
+        this.scheduleRepository = scheduleRepository;
+    }
 
     public List<ScheduledBooking> findAll(){
         return scheduleRepository.findAll();
