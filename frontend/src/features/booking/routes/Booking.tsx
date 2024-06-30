@@ -1,30 +1,19 @@
 import { DateCalendar, TimePicker } from "@mui/x-date-pickers"
 import { Box, Button, FormControl, InputLabel, MenuItem, Select } from "@mui/material";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { ContentLayout } from "../../../components/Layout";
-import { requestBooking } from "../api/request-booking";
-import dayjs from "dayjs";
+import dayjs, { Dayjs } from "dayjs";
 import { useFetchLocations } from "@/features/locations/api/fetch-locations";
+import { useRequestBooking } from "../api/request-booking";
+import { StaticDateTimePicker } from '@mui/x-date-pickers/StaticDateTimePicker';
 
 export const Booking = () => {
   const { locations } = useFetchLocations();
+  const { mutateAsync: bookCourt } = useRequestBooking();
 
-  const [location, setLocation] = useState("");
-  const [date, setDate] = useState(null);
-  const [availableTimes, setAvailableTimes] = useState<number[]>([]);
-
-  const handleBooking = () => {
-    if(location && date) {
-      return requestBooking({location, date});
-    }
-
-    console.error("Booking failed, please select a location and date.")
-  }
-
-  useEffect(() => {
-    const availableTimes = locations.filter(loc => loc.name === location)[0]?.times
-    setAvailableTimes(availableTimes)
-  }, [location])
+  const [locationId, setLocationId] = useState("");
+  const [date, setDate] = useState<Dayjs | null>(null);
+  const availableTimes = [10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22] //make this dynamic
 
   return (
     <ContentLayout title="Book A Court" subtitle="Schedule court bookings here">
@@ -34,16 +23,33 @@ export const Booking = () => {
           labelId="booking-location-label"
           id="booking-location"
           label="Location"
-          onChange={(e) => setLocation(e.target.value as string)}
+          onChange={(e) => setLocationId(e.target.value as string)}
         >
           {locations.map((location, index) => (
-            <MenuItem key={index} value={location.name}>{location.name}</MenuItem>
+            <MenuItem key={index} value={location.id}>{location.name}</MenuItem>
           ))}
         </Select>
       </FormControl>
       {location && (
         <>
-          <DateCalendar 
+          <StaticDateTimePicker
+            value={date}
+            minDate={dayjs().add(5, 'day')}
+            maxDate={dayjs().add(1, 'year')}
+            onChange={(newDate) => {
+              setDate(newDate)
+            }}
+          />
+          <Button
+            onClick={() => bookCourt({
+              location: locations.find(({ id }) => id === locationId),
+              bookingTime: date?.toISOString(),
+            })}
+            variant="contained"
+          >
+            Confirm
+          </Button>
+          {/* <DateCalendar 
             value={date} 
             minDate={dayjs().add(5, 'day')}
             maxDate={dayjs().add(1, 'year')}
@@ -55,11 +61,14 @@ export const Booking = () => {
                 minTime={dayjs().set('hour', Math.min(...availableTimes))}
                 maxTime={dayjs().set('hour', Math.max(...availableTimes))}
               />
-              <Button onClick={handleBooking}>
+              <Button onClick={() => bookCourt({
+                location,
+                date: date?.toISOString(),
+              })}>
                 Confirm Booking
               </Button>
             </Box>
-          ) : null}
+          ) : null} */}
         </>
       )
       }

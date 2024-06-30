@@ -23,6 +23,16 @@ public class WebService {
     private static final String MOUNTED_PATH = "/app";
     private static final Path TARGET_FILE = Paths.get(MOUNTED_PATH, "dates_log.txt");
 
+    public WebService(String username, String password) {
+        this.username = username;
+        this.password = password;
+    }
+
+
+    public void login(){
+
+    }
+
     public static void checkNextDateAvailability() {
         WebDriver driver = null;
 

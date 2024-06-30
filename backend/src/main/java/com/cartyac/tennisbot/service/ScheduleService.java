@@ -25,4 +25,8 @@ public class ScheduleService {
     public void deleteById(UUID id) {
         scheduleRepository.deleteById(id);
     }
+
+    public ScheduledBooking save(ScheduledBooking scheduledBooking) {
+        return scheduleRepository.save(scheduledBooking);
+    }
 }

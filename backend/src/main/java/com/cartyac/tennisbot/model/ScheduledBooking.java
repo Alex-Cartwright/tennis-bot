@@ -27,5 +27,5 @@ public class ScheduledBooking {
 
     @Column(name = "status")
     @Enumerated(EnumType.STRING)
-    private BookingStatus status;
+    private BookingStatus status = BookingStatus.PENDING;
 }

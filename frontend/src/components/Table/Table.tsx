@@ -2,7 +2,7 @@ import React from 'react';
 import TableContainer from "@mui/material/TableContainer";
 import MuiTable from "@mui/material/Table";
 import Paper from "@mui/material/Paper";
-import { TableBody, TableHead } from '@mui/material';
+import { TableBody, TableCell, TableHead, TableRow } from '@mui/material';
 
 type TableColumn<Entry> = {
   title: string;
@@ -19,22 +19,24 @@ export const Table = <Entry extends { id: string }>({ data, columns }: TableProp
   return (
     <TableContainer component={Paper}>
       <MuiTable>
-        <TableHead sx={{textAlign: "left"}}>
-          <tr>
+        <TableHead>
+          <TableRow>
             {columns.map((column, index) => (
-              <th key={column.title + index}>{column.title}</th>
+              <TableCell key={column.title + index} sx={{ fontWeight: 'bold', padding: '10px', textAlign: 'left' }}>
+                {column.title}
+              </TableCell>
             ))}
-          </tr>
+          </TableRow>
         </TableHead>
         <TableBody>
           {data.map((entry, entryIndex) => (
-            <tr key={entry?.id || entryIndex}>
+            <TableRow key={entry?.id || entryIndex}>
               {columns.map(({ Cell, field, title }, columnIndex) => (
-                <td key={title + columnIndex}>
-                  {Cell ? <Cell entry={entry} /> : (entry[field] as React.ReactNode)}
-                </td>
+                <TableCell key={title + columnIndex} sx={{ padding: '10px', textAlign: 'left' }}>
+                  {Cell ? <Cell entry={entry} /> : entry[field]}
+                </TableCell>
               ))}
-            </tr>
+            </TableRow>
           ))}
         </TableBody>
       </MuiTable>

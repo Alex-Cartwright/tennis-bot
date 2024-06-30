@@ -1,4 +1,4 @@
-import { Table } from "@/components/Table/Table";
+import { Table } from "@/components/Table/table";
 import { ContentLayout } from "../../../components/Layout";
 import { useScheduledBookings } from "../hooks/use-scheduled-bookings";
 import { ScheduledBooking } from "../types";

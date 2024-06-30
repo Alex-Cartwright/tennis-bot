@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { ScheduledBooking } from "../types";
-import { getScheduledBookings } from "../api/get-scheduled-bookings";
+import { getScheduledBookings } from "../../booking/api/get-scheduled-bookings";
 
 export const useScheduledBookings = () => {
   const [scheduledBookings, setScheduledBookings] = useState<ScheduledBooking[]>([]);

@@ -26,8 +26,7 @@ public class ScheduleController {
 
     @PostMapping
     public ScheduledBooking addScheduledBooking(@RequestBody ScheduledBooking scheduledBooking) {
-        scheduledBooking.setId(UUID.randomUUID());
-        return scheduledBooking;
+        return scheduleService.save(scheduledBooking);
     }
 
     @DeleteMapping("/{id}")

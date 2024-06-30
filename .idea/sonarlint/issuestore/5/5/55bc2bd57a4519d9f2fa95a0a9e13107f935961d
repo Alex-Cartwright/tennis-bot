@@ -1,12 +1,14 @@
 
-v
-java:S1141="5Extract this nested try block into a separate method.(¡»¢üùÿÿÿÿJ$b7f6c9e5-dc09-4cc2-8e7c-5cf028d45dbe
+}
+java:S1141G"5Extract this nested try block into a separate method.(¡»¢üùÿÿÿÿ8†¶èÓ†2J$57d6725b-9814-4ef3-8ac0-4cf90aba823b
+É
+java:S1186 "€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(¶ç¸±ùÿÿÿÿ8‹¶èÓ†2J$4e6d39a3-6aa4-496a-8422-0edad7cecd05
 ‚
-java:S1075"ARefactor your code to get this URI from a customizable parameter.(ð«–¢üÿÿÿÿJ$5ee0b08f-6f0c-417a-92e7-c4557de4eda4
-“
-java:S3776"RRefactor this method to reduce its Cognitive Complexity from 16 to the 15 allowed.(ÇÛéˆùÿÿÿÿJ$55078658-9f20-443a-afdc-78ed110a00c4
-k	java:S106H"+Replace this use of System.out by a logger.(ååüóýÿÿÿÿJ$0c0eb5bd-db55-4d79-985f-8f56676614a6
-f	java:S106M"+Replace this use of System.out by a logger.(€Â½ÙJ$0f0c2817-665f-4d70-ba2d-7cd22d687a00
-k	java:S106O"+Replace this use of System.out by a logger.(õÜÇÿûÿÿÿÿJ$0f6185f7-6e3d-4b39-a466-e984c06f7af7
-f	java:S106S"+Replace this use of System.out by a logger.(Ú†ê‚J$09a245d0-b09e-4cff-8b80-2241130e2a2b
-k	java:S106]"+Replace this use of System.out by a logger.(ÏÆÉèúÿÿÿÿJ$925edc87-910e-4238-959a-35779ebbbec6
+java:S1075"ARefactor your code to get this URI from a customizable parameter.(ð«–¢üÿÿÿÿJ$7268e77d-b590-4ad1-ac27-c8f272e3f872
+š
+java:S3776$"RRefactor this method to reduce its Cognitive Complexity from 16 to the 15 allowed.(ÇÛéˆùÿÿÿÿ8“¶èÓ†2J$6139cd99-8506-4354-9625-aade48faddec
+r	java:S106R"+Replace this use of System.out by a logger.(ååüóýÿÿÿÿ8 ¶èÓ†2J$0f9bca41-8ced-4c16-b0e9-3ebb2e825b93
+m	java:S106W"+Replace this use of System.out by a logger.(€Â½Ù8¤¶èÓ†2J$c89ed3fb-f6e6-43d8-8a15-f1a0a6aeb12b
+r	java:S106Y"+Replace this use of System.out by a logger.(õÜÇÿûÿÿÿÿ8¤¶èÓ†2J$661467d8-7d73-4b4c-95c0-21e99e83cb86
+m	java:S106]"+Replace this use of System.out by a logger.(Ú†ê‚8¥¶èÓ†2J$2c1f9514-33c1-4120-9326-0ab2e96d1977
+r	java:S106g"+Replace this use of System.out by a logger.(ÏÆÉèúÿÿÿÿ8¦¶èÓ†2J$b5a4f62a-3dfa-4b84-97de-78c37ea2093e

@@ -1,4 +1,4 @@
-import { Table } from "@/components/Table/Table";
+import { Table } from "@/components/Table/table";
 import { ContentLayout } from "../../../components/Layout";
 import { Location } from "@/types";
 import { CreateLocation } from "../components/create-location";
