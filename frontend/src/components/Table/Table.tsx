@@ -19,10 +19,10 @@ export const Table = <Entry extends { id: string }>({ data, columns }: TableProp
   return (
     <TableContainer component={Paper}>
       <MuiTable>
-        <TableHead>
+        <TableHead sx={{textAlign: "left"}}>
           <tr>
-            {columns.map((column) => (
-              <th key={column.title}>{column.title}</th>
+            {columns.map((column, index) => (
+              <th key={column.title + index}>{column.title}</th>
             ))}
           </tr>
         </TableHead>

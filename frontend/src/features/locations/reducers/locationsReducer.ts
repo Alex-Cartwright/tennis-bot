@@ -1,70 +1,53 @@
 import { handleActions, Action } from "redux-actions";
 import {
-  RESET_UI,
-  STARTED_ADDING,
-  CANCELLED_ADDING,
   STARTED_EDITING,
-  SET_NEW_LOCATION_NAME,
-  SET_NEW_LOCATION_URL,
+  LocationsPayloadType,
   SET_EDIT_LOCATION_NAME,
   SET_EDIT_LOCATION_URL,
-  LocationsPayloadType,
-  StartedEditingPayload,
+  CANCELLED_EDITING,
+  CONFIRMED_EDITING,
 } from "../actions/actions";
-import { LocationDTO } from "../types";
+import { Location } from "@/types";
 
 export type LocationsTableState = {
-  isAdding: boolean,
-  isEditingId: string,
-  newLocation: LocationDTO,
-  editLocation: LocationDTO
+  editingId: string;
+  editingName: string;
+  editingUrl: string;
 }
 
 export const initialState: LocationsTableState = {
-  isAdding: false,
-  isEditingId: "",
-  newLocation: { name: "", url: "" },
-  editLocation: { name: "", url: "" },
+  editingId: "",
+  editingName: "",
+  editingUrl: "",
 };
 
 export const locationsReducer = handleActions<LocationsTableState, LocationsPayloadType>(
   {
-    [RESET_UI]: () => initialState,
-    [STARTED_ADDING]: (state) => ({ ...state, isAdding: true, isEditingId: ""}),
-    [CANCELLED_ADDING]: (state) => ({ ...state, isAdding: false }),
-    [STARTED_EDITING]: (state, action: Action<LocationsPayloadType>) => {
-      const { id, name, url } = action.payload as StartedEditingPayload;
+    [STARTED_EDITING]: (_, action: Action<LocationsPayloadType>) => {
+      const { id, name, url } = action.payload as Location;
       return {
-        ...state,
-        isAdding: false,
-        isEditingId: id,
-        editLocation: { name, url }
+        editingId: id,
+        editingName: name,
+        editingUrl: url
       };
     },
-    [SET_NEW_LOCATION_NAME]: (state, action) => (
-      {
-        ...state,
-        newLocation: {...state.newLocation, name: action.payload as string}
-      }
-    ),
-    [SET_NEW_LOCATION_URL]: (state, action) => (
-      {
-        ...state,
-        newLocation: {...state.newLocation, url: action.payload as string}
-      }
-    ),
     [SET_EDIT_LOCATION_NAME]: (state, action) => (
       {
         ...state,
-        editLocation: {...state.editLocation, name: action.payload as string}
+        editingName: action.payload as string
       }
     ),
     [SET_EDIT_LOCATION_URL]: (state, action) => (
       {
         ...state,
-        editLocation: {...state.editLocation, url: action.payload as string}
+        editingUrl: action.payload as string
       }
-    )
+    ),
+    [CONFIRMED_EDITING]: () => initialState,
+    [CANCELLED_EDITING]: () => {
+      console.log("cancelled")
+      return initialState
+    }
   },
   initialState
 );

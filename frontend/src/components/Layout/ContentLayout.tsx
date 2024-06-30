@@ -3,7 +3,7 @@ import { Header } from "../Header"
 
 type ContentLayoutProps = {
   title: string,
-  subtitle: string,
+  subtitle?: string,
   children: React.ReactNode
 }
 
