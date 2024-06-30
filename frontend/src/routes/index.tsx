@@ -1,7 +1,7 @@
 import { Outlet, useRoutes } from "react-router-dom"
 import { Home } from "../features/home"
 import { Booking } from "../features/booking"
-import { Schedule } from "../features/schedule/routes/Schedule"
+import { Schedule } from "../features/schedule/routes/schedule"
 import { MainLayout } from "../components/Layout"
 import { Locations } from "../features/locations"
 

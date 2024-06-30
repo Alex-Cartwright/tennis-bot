@@ -1,6 +1,6 @@
 import { Table } from "@/components/Table/Table";
 import { ContentLayout } from "../../../components/Layout";
-import { useScheduledBookings } from "../hooks/useScheduledBookings";
+import { useScheduledBookings } from "../hooks/use-scheduled-bookings";
 import { ScheduledBooking } from "../types";
 
 export const Schedule = () => {

@@ -1,8 +1,8 @@
-import axios from "@/lib/axios";
+import api from "@/lib/api-client";
 import { useMutation, useQueryClient } from "react-query";
 
 export const deleteLocation = async (id: string) => {
-  await axios.delete(`/locations/${id}`);
+  await api.delete(`/locations/${id}`);
 }
 
 export const useDeleteLocation = () => {

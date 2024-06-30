@@ -1,1 +1,1 @@
-export * from "./routes/Locations"
+export * from "./routes/locations"

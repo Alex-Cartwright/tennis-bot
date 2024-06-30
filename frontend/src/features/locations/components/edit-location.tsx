@@ -45,16 +45,6 @@ export const EditCell: React.FC<EditCellProps> = ({
   dispatch,
 }) => {
 
-
-  //mount and unmount logging
-  useEffect(() => {
-    console.log("mounted")
-    return () => {
-      console.log("unmounted")
-    }
-  }, [])
-
-
   return (
     <Input
       value={value}

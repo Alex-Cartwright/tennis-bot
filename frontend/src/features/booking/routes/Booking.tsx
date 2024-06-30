@@ -2,12 +2,12 @@ import { DateCalendar, TimePicker } from "@mui/x-date-pickers"
 import { Box, Button, FormControl, InputLabel, MenuItem, Select } from "@mui/material";
 import { useEffect, useState } from "react";
 import { ContentLayout } from "../../../components/Layout";
-import { requestBooking } from "../api/requestBooking";
+import { requestBooking } from "../api/request-booking";
 import dayjs from "dayjs";
-import { useLocations } from "@/hooks/useLocations";
+import { useFetchLocations } from "@/features/locations/api/fetch-locations";
 
 export const Booking = () => {
-  const { locations } = useLocations();
+  const { locations } = useFetchLocations();
 
   const [location, setLocation] = useState("");
   const [date, setDate] = useState(null);

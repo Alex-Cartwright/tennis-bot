@@ -1,9 +1,9 @@
-import instance from "@/lib/axios"
+import api from "@/lib/api-client";
 import { Location } from "@/types"
 import { useMutation, useQueryClient } from "react-query";
 
 export const editLocation = async (location: Location): Promise<Location> => {
-  const response = await instance.put(`/locations/${location.id}`, {name: location.name, url: location.url});
+  const response = await api.put(`/locations/${location.id}`, {name: location.name, url: location.url});
   return response.data;
 }
 

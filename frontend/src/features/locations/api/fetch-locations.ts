@@ -1,9 +1,9 @@
-import axios from "@/lib/axios";
+import api from "@/lib/api-client";
 import { Location } from "@/types";
 import { useQuery } from "react-query";
 
 export const fetchLocations = async (): Promise<Location[]> => {
-  const response = await axios.get("/locations");
+  const response = await api.get("/locations");
   return response.data;
 };
 
