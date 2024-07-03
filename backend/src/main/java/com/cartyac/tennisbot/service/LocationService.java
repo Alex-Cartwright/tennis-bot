@@ -9,5 +9,8 @@ public interface LocationService {
 
     Location findById(UUID id);
     List<Location> findAll();
+    Location save(Location location);
+    void deleteById(UUID id);
+
 
 }

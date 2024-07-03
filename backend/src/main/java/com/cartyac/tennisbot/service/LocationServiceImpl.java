@@ -34,10 +34,12 @@ public class LocationServiceImpl implements LocationService {
         return locationRepository.findById(id).orElse(null);
     }
 
+    @Override
     public Location save(Location location) {
         return locationRepository.save(location);
     }
 
+    @Override
     public void deleteById(UUID id) {
         Location location = locationRepository.findById(id).orElseThrow(() ->
                 new EntityNotFoundException(String.format("Location with id %s not found", id))
