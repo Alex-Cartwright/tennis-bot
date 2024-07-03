@@ -3,30 +3,66 @@ package com.cartyac.tennisbot.repository;
 import com.cartyac.tennisbot.model.Location;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.jdbc.EmbeddedDatabaseConnection;
-import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 
-import static org.junit.jupiter.api.Assertions.assertNotNull;
+import java.util.List;
+
+import static org.junit.jupiter.api.Assertions.*;
 
 @DataJpaTest
-@AutoConfigureTestDatabase(connection = EmbeddedDatabaseConnection.H2)
 class LocationRepositoryTest {
 
     @Autowired
     private LocationRepository locationRepository;
 
-    @Test
-    void save_ShouldSaveLocation() {
-        Location location = Location.builder()
+    Location location = Location.builder()
                 .name("Lea")
                 .url("URL1")
                 .isActive(true)
                 .build();
 
+    @Test
+    void save_ShouldSaveLocation() {
         Location savedLocation = locationRepository.save(location);
 
         assertNotNull(savedLocation);
         assertNotNull(savedLocation.getId());
+    }
+
+    @Test
+    void findById_ShouldFindLocationById() {
+        locationRepository.save(location);
+
+        Location foundLocation = locationRepository.findById(location.getId()).orElse(null);
+
+        assertNotNull(foundLocation);
+    }
+
+    @Test
+    void delete_ShouldDeleteLocation() {
+        Location savedLocation = locationRepository.save(location);
+
+        locationRepository.delete(savedLocation);
+
+        Location foundLocation = locationRepository.findById(savedLocation.getId()).orElse(null);
+
+        assertNull(foundLocation);
+    }
+
+    @Test
+    void findAll_ShouldFindAllLocations() {
+        Location location2 = Location.builder()
+                .name("Islington")
+                .url("URL1")
+                .isActive(true)
+                .build();
+
+        locationRepository.save(location);
+        locationRepository.save(location2);
+
+        List<Location> locations = locationRepository.findAll();
+
+        assertNotNull(locations);
+        assertEquals(2, locations.size());
     }
 }

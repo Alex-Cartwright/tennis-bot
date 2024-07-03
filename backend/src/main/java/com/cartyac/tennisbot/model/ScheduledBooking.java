@@ -1,6 +1,7 @@
 package com.cartyac.tennisbot.model;
 
 import jakarta.persistence.*;
+import lombok.Builder;
 import lombok.Data;
 
 import java.time.OffsetDateTime;
@@ -12,6 +13,7 @@ import java.util.UUID;
 @Entity
 @Table(name = "scheduled_bookings")
 @Data
+@Builder
 public class ScheduledBooking {
 
     @Id

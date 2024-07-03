@@ -11,8 +11,6 @@ import org.springframework.test.web.servlet.MockMvc;
 
 import java.util.UUID;
 
-import static org.junit.jupiter.api.Assertions.*;
-
 @WebMvcTest(LocationController.class)
 class LocationControllerTest {
 

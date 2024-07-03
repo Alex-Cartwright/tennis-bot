@@ -49,11 +49,13 @@ Ibackend/src/main/java/com/cartyac/tennisbot/controller/WebController.java,1\f\
 backend/.env,f\3\f30451335edfb80e231f658d0defc83bb7e4c3a7
 Å
 Qbackend/src/main/java/com/cartyac/tennisbot/exception/GlobalExceptionHandler.java,2\0\20ff60474101b097c68b42eeffa8d2aad0942fff
-~
-Nbackend/src/test/java/com/cartyac/tennisbot/controller/LocationController.java,4\3\434354c58069f7ce7bec2ebb21d4967e95c34e20
 O
 backend/src/test/java/README.md,f\2\f2b5015bfd335ad45016d46ba4ebec77477713b0
 Ç
 Rbackend/src/test/java/com/cartyac/tennisbot/repository/LocationRepositoryTest.java,6\5\6555e4d3beaa20f1a82eb7080f4e7003cfd82b3c
 y
 Ibackend/src/test/java/com/cartyac/tennisbot/TennisBotApplicationTest.java,8\f\8f7f6acce57de830e940378abc53450ae09f8977
+Ç
+Rbackend/src/test/java/com/cartyac/tennisbot/controller/LocationControllerTest.java,2\2\222bf3cc57584d2c2d341f5516076af9a2132913
+Ç
+Rbackend/src/test/java/com/cartyac/tennisbot/repository/ScheduleRepositoryTest.java,c\1\c1e99e134ddd2d132a2100550238a8ae2c48be61

@@ -14,3 +14,8 @@ By using this annotation, an in-memory H2 database will be set up, and Spring Da
 
 @Autowired allows spring to automatically wire the dependency
 It is annotations-driven Dependency injection.
+
+
+
+
+You want to unit test the methods you are relying on.
