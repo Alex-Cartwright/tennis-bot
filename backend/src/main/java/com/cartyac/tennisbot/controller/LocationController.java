@@ -1,5 +1,6 @@
 package com.cartyac.tennisbot.controller;
 
+import com.cartyac.tennisbot.dto.LocationDTO;
 import com.cartyac.tennisbot.model.Location;
 import com.cartyac.tennisbot.service.LocationService;
 import org.springframework.beans.factory.annotation.Autowired;

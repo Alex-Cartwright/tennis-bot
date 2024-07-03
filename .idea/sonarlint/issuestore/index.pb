@@ -59,3 +59,9 @@ Ibackend/src/test/java/com/cartyac/tennisbot/TennisBotApplicationTest.java,8\f\
 Rbackend/src/test/java/com/cartyac/tennisbot/controller/LocationControllerTest.java,2\2\222bf3cc57584d2c2d341f5516076af9a2132913
 ‚
 Rbackend/src/test/java/com/cartyac/tennisbot/repository/ScheduleRepositoryTest.java,c\1\c1e99e134ddd2d132a2100550238a8ae2c48be61
+|
+Lbackend/src/test/java/com/cartyac/tennisbot/service/LocationServiceTest.java,c\b\cba31b527a4b812ec8d82e51de4253286ab50508
+p
+@backend/src/main/java/com/cartyac/tennisbot/dto/LocationDTO.java,d\a\da6984b2fd067cd6472f3e61cf2e20ba2ab6c177
+|
+Lbackend/src/main/java/com/cartyac/tennisbot/service/LocationServiceImpl.java,0\2\02aa0f41406f6c7cc0f67ec06c15fe1fb0f3d52a
