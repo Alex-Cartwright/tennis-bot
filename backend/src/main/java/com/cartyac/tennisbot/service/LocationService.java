@@ -1,7 +1,10 @@
 package com.cartyac.tennisbot.service;
 
 import com.cartyac.tennisbot.model.Location;
+import com.cartyac.tennisbot.model.ScheduledBooking;
 import com.cartyac.tennisbot.repository.LocationRepository;
+import com.cartyac.tennisbot.repository.ScheduleRepository;
+import jakarta.persistence.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -12,10 +15,15 @@ import java.util.UUID;
 public class LocationService {
 
     private final LocationRepository locationRepository;
+    private final ScheduleRepository scheduleRepository;
 
     @Autowired
-    public LocationService(LocationRepository locationRepository) {
+    public LocationService(
+            LocationRepository locationRepository,
+            ScheduleRepository scheduleRepository
+    ) {
         this.locationRepository = locationRepository;
+        this.scheduleRepository = scheduleRepository;
     }
 
     public List<Location> findAll(){
@@ -31,6 +39,21 @@ public class LocationService {
     }
 
     public void deleteById(UUID id) {
-        locationRepository.deleteById(id);
+        Location location = locationRepository.findById(id).orElseThrow(() ->
+                new EntityNotFoundException(String.format("Location with id %s not found", id))
+        );
+
+        boolean bookingsExist = scheduleRepository.existsByLocation(location);
+
+        if(bookingsExist) {
+            softDelete(location);
+        } else {
+            locationRepository.deleteById(id);
+        }
+    }
+
+    private void softDelete(Location location) {
+        location.setActive(false);
+        locationRepository.save(location);
     }
 }

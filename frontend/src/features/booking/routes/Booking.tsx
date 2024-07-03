@@ -6,6 +6,7 @@ import dayjs, { Dayjs } from "dayjs";
 import { useFetchLocations } from "@/features/locations/api/fetch-locations";
 import { useRequestBooking } from "../api/request-booking";
 import { StaticDateTimePicker } from '@mui/x-date-pickers/StaticDateTimePicker';
+import { useNavigate } from "react-router-dom";
 
 export const Booking = () => {
   const { locations } = useFetchLocations();
@@ -14,6 +15,8 @@ export const Booking = () => {
   const [locationId, setLocationId] = useState("");
   const [date, setDate] = useState<Dayjs | null>(null);
   const availableTimes = [10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22] //make this dynamic
+
+  const navigate = useNavigate();
 
   return (
     <ContentLayout title="Book A Court" subtitle="Schedule court bookings here">
@@ -41,10 +44,13 @@ export const Booking = () => {
             }}
           />
           <Button
-            onClick={() => bookCourt({
+            onClick={() => {
+              bookCourt({
               location: locations.find(({ id }) => id === locationId),
               bookingTime: date?.toISOString(),
-            })}
+            })
+            navigate('/schedule')
+            }}
             variant="contained"
           >
             Confirm

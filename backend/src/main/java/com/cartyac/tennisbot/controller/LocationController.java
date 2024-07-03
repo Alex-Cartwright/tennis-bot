@@ -3,6 +3,7 @@ package com.cartyac.tennisbot.controller;
 import com.cartyac.tennisbot.model.Location;
 import com.cartyac.tennisbot.service.LocationService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -25,24 +26,28 @@ public class LocationController {
     }
 
     @GetMapping("/{id}")
-    public Location getLocationById(@PathVariable UUID id) {
-        return locationService.findById(id);
+    public ResponseEntity<Location> getLocationById(@PathVariable UUID id) {
+        Location location = locationService.findById(id);
+        return ResponseEntity.ok(location);
     }
 
     @PostMapping
-    public Location createLocation(@RequestBody Location location) {
+    public ResponseEntity<Location> createLocation(@RequestBody Location location) {
         location.setId(UUID.randomUUID());
-        return locationService.save(location);
+        Location savedLocation = locationService.save(location);
+        return ResponseEntity.ok(savedLocation);
     }
 
     @PutMapping("/{id}")
-    public Location updateLocation(@PathVariable UUID id, @RequestBody Location location) {
+    public ResponseEntity<Location> updateLocation(@PathVariable UUID id, @RequestBody Location location) {
         location.setId(id);
-        return locationService.save(location);
+        Location updatedLocation = locationService.save(location);
+        return ResponseEntity.ok(updatedLocation);
     }
 
     @DeleteMapping("/{id}")
-    public void deleteLocation(@PathVariable UUID id) {
+    public ResponseEntity<Void> deleteLocation(@PathVariable UUID id) {
         locationService.deleteById(id);
+        return ResponseEntity.noContent().build();
     }
 }

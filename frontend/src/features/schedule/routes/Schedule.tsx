@@ -11,7 +11,6 @@ export const Schedule = () => {
       <Table<ScheduledBooking>
         data={scheduledBookings}
         columns={[
-          { title: "ID", field: "id" },
           { title: "Date", field: "bookingTime" },
           {
             title: "Location",
