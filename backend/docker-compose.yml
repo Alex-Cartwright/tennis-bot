@@ -1,4 +1,5 @@
 version: '3.8'
+
 services:
   tennis-bot:
     image: tennis-bot:latest
@@ -19,6 +20,19 @@ services:
       SPRING_JPA_PROPERTIES_HIBERNATE_DIALECT: org.hibernate.dialect.PostgreSQLDialect
     depends_on:
       - db
+    profiles:
+      - regular
+
+  tennis-bot-debug:
+    extends:
+      service: tennis-bot
+    ports:
+      - "8080:8080"
+      - "5005:5005"   # Debug port
+    environment:
+      JAVA_TOOL_OPTIONS: -agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=*:5005
+    profiles:
+      - debug
 
   db:
     image: postgres:latest
@@ -30,4 +44,3 @@ services:
       - "5433:5432"
     volumes:
       - ./data:/var/lib/postgresql/data
-
