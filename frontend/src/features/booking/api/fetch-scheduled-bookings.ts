@@ -1,5 +1,5 @@
 import api from "@/lib/api-client";
-import { ScheduledBooking } from "../../schedule/types";
+import { ScheduledBooking } from "../../schedule/types/schedule-type";
 import { useQuery } from "react-query";
 
 export const getScheduledBookings = async (): Promise<ScheduledBooking[]> => {

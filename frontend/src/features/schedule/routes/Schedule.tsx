@@ -1,6 +1,6 @@
 import { Table } from "@/components/Table/table";
 import { ContentLayout } from "@/components/Layout/content-layout";
-import { ScheduledBooking } from "../types";
+import { ScheduledBooking } from "../types/schedule-type";
 import { useScheduledBookings } from "@/features/booking/api/fetch-scheduled-bookings";
 
 export const Schedule = () => {
