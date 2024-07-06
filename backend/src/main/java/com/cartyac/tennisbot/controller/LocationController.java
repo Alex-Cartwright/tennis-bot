@@ -27,9 +27,10 @@ public class LocationController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Location> getLocationById(@PathVariable UUID id) {
+    public ResponseEntity<LocationDTO> getLocationById(@PathVariable UUID id) {
         Location location = locationService.findById(id);
-        return ResponseEntity.ok(location);
+        LocationDTO locationDTO = LocationDTO.map(location);
+        return ResponseEntity.ok(locationDTO);
     }
 
     @PostMapping

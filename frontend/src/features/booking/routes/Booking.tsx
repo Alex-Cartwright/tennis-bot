@@ -6,6 +6,7 @@ import { StaticDateTimePicker } from '@mui/x-date-pickers/StaticDateTimePicker';
 import { useNavigate } from "react-router-dom";
 import { ContentLayout } from "@/components/Layout/content-layout";
 import { useRequestBooking } from "../api/request-booking";
+import { renderDigitalClockTimeView } from "@mui/x-date-pickers";
 
 export const Booking = () => {
   const { locations } = useFetchLocations();
@@ -36,10 +37,15 @@ export const Booking = () => {
         <>
           <StaticDateTimePicker
             value={date}
+            ampm={false}
             minDate={dayjs().add(5, 'day')}
             maxDate={dayjs().add(1, 'year')}
             onChange={(newDate) => {
               setDate(newDate)
+            }}
+            viewRenderers={{
+              minutes: null,
+              hours: renderDigitalClockTimeView
             }}
           />
           <Button

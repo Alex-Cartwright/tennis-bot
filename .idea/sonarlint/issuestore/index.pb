@@ -65,3 +65,9 @@ p
 @backend/src/main/java/com/cartyac/tennisbot/dto/LocationDTO.java,d\a\da6984b2fd067cd6472f3e61cf2e20ba2ab6c177
 |
 Lbackend/src/main/java/com/cartyac/tennisbot/service/LocationServiceImpl.java,0\2\02aa0f41406f6c7cc0f67ec06c15fe1fb0f3d52a
+u
+Ebackend/src/main/java/com/cartyac/tennisbot/dto/LocationResponse.java,d\f\dfe2172c5c64fffd788a676960b9885af5273f94
+t
+Dbackend/src/main/java/com/cartyac/tennisbot/dto/LocationRequest.java,7\3\73412b583765f60bcb0e5f978de2a4bba095f4aa
+p
+@backend/src/main/java/com/cartyac/tennisbot/repository/List.java,7\6\768a18d9661fdba3dcdc4f36baeb423fb58dfd7a

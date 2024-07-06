@@ -29,6 +29,10 @@ public class LocationServiceImpl implements LocationService {
         return locationRepository.findAll();
     }
 
+    public List<Location> findAllActive() {
+        return locationRepository.findAllByIsActiveTrue();
+    }
+
     @Override
     public Location findById(UUID id) {
         return locationRepository.findById(id).orElse(null);

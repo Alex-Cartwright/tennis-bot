@@ -1,14 +1,11 @@
 package com.cartyac.tennisbot.dto;
 
-import lombok.Builder;
-import lombok.Data;
+import com.cartyac.tennisbot.model.Location;
 
 import java.util.UUID;
 
-@Data
-@Builder
-public class LocationDTO {
-    private UUID id;
-    private String name;
-    private String url;
+public record LocationDTO(UUID id, String name, String url) {
+    public static LocationDTO map(Location location) {
+        return new LocationDTO(location.getId(), location.getName(), location.getUrl());
+    }
 }

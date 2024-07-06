@@ -65,4 +65,22 @@ class LocationRepositoryTest {
         assertNotNull(locations);
         assertEquals(2, locations.size());
     }
+
+    @Test
+    void findAllByIsActiveTrue_ShouldFindAllActiveLocations() {
+        Location location2 = Location.builder()
+                .name("Islington")
+                .url("URL1")
+                .isActive(false)
+                .build();
+
+        locationRepository.save(location);
+        locationRepository.save(location2);
+
+        List<Location> locations = locationRepository.findAllByIsActiveTrue();
+
+        assertNotNull(locations);
+        assertTrue(locations.contains(location));
+        assertTrue(!locations.contains(location2));
+    }
 }
