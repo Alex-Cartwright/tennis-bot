@@ -8,8 +8,14 @@ export const getScheduledBookings = async (): Promise<ScheduledBooking[]> => {
 };
 
 export const useScheduledBookings = () => {
-  return useQuery<ScheduledBooking[], Error>({
+  const {
+    data: scheduledBookings = [],
+    isLoading,
+    isError,
+  } = useQuery<ScheduledBooking[], Error>({
     queryKey: "scheduledBookings",
     queryFn: getScheduledBookings,
   });
+  console.log("fetching scheduled bookings");
+  return { scheduledBookings, isLoading, isError}
 };

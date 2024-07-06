@@ -1,9 +1,9 @@
 import { Outlet, useRoutes } from "react-router-dom"
-import { Home } from "../features/home"
-import { Booking } from "../features/booking"
-import { Schedule } from "../features/schedule/routes/schedule"
-import { MainLayout } from "../components/Layout"
-import { Locations } from "../features/locations"
+import { MainLayout } from "@/components/Layout/main-layout"
+import { Booking } from "@/features/booking/routes/booking"
+import { Home } from "@/features/home/home"
+import { Schedule } from "@/features/schedule/routes/schedule"
+import { Locations } from "@/features/locations/routes/locations"
 
 export const AppRoutes = () => {
 

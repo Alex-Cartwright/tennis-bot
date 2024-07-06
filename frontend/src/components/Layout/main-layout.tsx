@@ -1,5 +1,5 @@
-import { Navbar } from "../Navbar"
 import { Box } from "@mui/material"
+import { Navbar } from "../Navbar/navbar"
 
 type MainLayoutProps = {
   children: React.ReactNode

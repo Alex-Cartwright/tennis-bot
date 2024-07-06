@@ -1,7 +1,7 @@
 import { Table } from "@/components/Table/table";
-import { ContentLayout } from "../../../components/Layout";
-import { useScheduledBookings } from "../hooks/use-scheduled-bookings";
+import { ContentLayout } from "@/components/Layout/content-layout";
 import { ScheduledBooking } from "../types";
+import { useScheduledBookings } from "@/features/booking/api/fetch-scheduled-bookings";
 
 export const Schedule = () => {
   const { scheduledBookings } = useScheduledBookings();

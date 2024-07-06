@@ -1,12 +1,11 @@
-import { DateCalendar, TimePicker } from "@mui/x-date-pickers"
-import { Box, Button, FormControl, InputLabel, MenuItem, Select } from "@mui/material";
+import { Button, FormControl, InputLabel, MenuItem, Select } from "@mui/material";
 import { useState } from "react";
-import { ContentLayout } from "../../../components/Layout";
 import dayjs, { Dayjs } from "dayjs";
 import { useFetchLocations } from "@/features/locations/api/fetch-locations";
-import { useRequestBooking } from "../api/request-booking";
 import { StaticDateTimePicker } from '@mui/x-date-pickers/StaticDateTimePicker';
 import { useNavigate } from "react-router-dom";
+import { ContentLayout } from "@/components/Layout/content-layout";
+import { useRequestBooking } from "../api/request-booking";
 
 export const Booking = () => {
   const { locations } = useFetchLocations();
@@ -55,26 +54,6 @@ export const Booking = () => {
           >
             Confirm
           </Button>
-          {/* <DateCalendar 
-            value={date} 
-            minDate={dayjs().add(5, 'day')}
-            maxDate={dayjs().add(1, 'year')}
-            onChange={(newDate) => setDate(newDate)}
-          />
-          {availableTimes ? (
-            <Box sx={{display: 'flex', flexDirection: 'column', gap:2}}>
-              <TimePicker
-                minTime={dayjs().set('hour', Math.min(...availableTimes))}
-                maxTime={dayjs().set('hour', Math.max(...availableTimes))}
-              />
-              <Button onClick={() => bookCourt({
-                location,
-                date: date?.toISOString(),
-              })}>
-                Confirm Booking
-              </Button>
-            </Box>
-          ) : null} */}
         </>
       )
       }
