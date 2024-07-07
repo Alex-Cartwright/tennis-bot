@@ -1,8 +1,10 @@
 package com.cartyac.tennisbot.model;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.time.OffsetDateTime;
 import java.util.UUID;
@@ -14,6 +16,8 @@ import java.util.UUID;
 @Table(name = "scheduled_bookings")
 @Data
 @Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class Booking {
 
     @Id

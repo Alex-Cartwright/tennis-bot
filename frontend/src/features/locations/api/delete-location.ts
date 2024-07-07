@@ -2,7 +2,7 @@ import api from "@/lib/api-client";
 import { useMutation, useQueryClient } from "react-query";
 
 export const deleteLocation = async (id: string) => {
-  await api.delete(`/locations/${id}`);
+  return await api.delete(`/locations/${id}`);
 }
 
 export const useDeleteLocation = () => {

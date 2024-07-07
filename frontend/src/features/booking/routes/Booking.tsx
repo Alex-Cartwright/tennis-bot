@@ -6,7 +6,7 @@ import { StaticDateTimePicker } from '@mui/x-date-pickers/StaticDateTimePicker';
 import { useNavigate } from "react-router-dom";
 import { ContentLayout } from "@/components/Layout/content-layout";
 import { useRequestBooking } from "../api/request-booking";
-import { renderDigitalClockTimeView } from "@mui/x-date-pickers";
+import { DigitalClock, renderDigitalClockTimeView } from "@mui/x-date-pickers";
 
 export const Booking = () => {
   const { locations } = useFetchLocations();
@@ -14,6 +14,7 @@ export const Booking = () => {
 
   const [locationId, setLocationId] = useState("");
   const [date, setDate] = useState<Dayjs | null>(null);
+  const [time, setTime] = useState<number | null>(null);
   const availableTimes = [10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22] //make this dynamic
 
   const navigate = useNavigate();
@@ -48,6 +49,7 @@ export const Booking = () => {
               hours: renderDigitalClockTimeView
             }}
           />
+          <DigitalClock/>
           <Button
             onClick={() => {
               bookCourt({

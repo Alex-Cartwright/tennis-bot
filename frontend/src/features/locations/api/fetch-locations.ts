@@ -3,8 +3,7 @@ import { Location } from "@/types";
 import { useQuery } from "react-query";
 
 export const fetchLocations = async (): Promise<Location[]> => {
-  const response = await api.get("/locations");
-  return response.data;
+  return await api.get("/locations");
 };
 
 export const useFetchLocations = () => {

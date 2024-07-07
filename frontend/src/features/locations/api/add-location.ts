@@ -3,8 +3,7 @@ import { LocationDTO } from "../types/location-types"
 import { useMutation, useQueryClient } from "react-query"
 
 const addLocation = async (location: LocationDTO) => {
-  const response = await api.post("/locations", location)
-  return response.data
+  return await api.post("/locations", location)
 }
 
 export const useAddLocation = () => {

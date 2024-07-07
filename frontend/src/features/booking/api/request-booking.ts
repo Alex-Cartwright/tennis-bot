@@ -3,8 +3,7 @@ import { useMutation, useQueryClient } from "react-query"
 import { BookingDTO } from "../types/booking-types"
 
 export const requestBooking = async (booking: BookingDTO) => {
-  const response = await api.post("/scheduled_bookings", booking)
-  return response.data
+  return await api.post("/scheduled_bookings", booking)
 }
 
 export const useRequestBooking = () => {

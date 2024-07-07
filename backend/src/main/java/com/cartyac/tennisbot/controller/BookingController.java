@@ -23,7 +23,7 @@ public class BookingController {
     }
 
     @GetMapping
-    public List<BookingResponseDTO> getAllScheduledBookings() {
+    public List<BookingResponseDTO> getAllBookings() {
         return bookingService.findAll()
                 .stream()
                 .map(BookingResponseDTO::new)

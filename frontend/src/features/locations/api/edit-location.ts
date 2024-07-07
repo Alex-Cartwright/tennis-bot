@@ -3,8 +3,7 @@ import { Location } from "@/types"
 import { useMutation, useQueryClient } from "react-query";
 
 export const editLocation = async (location: Location): Promise<Location> => {
-  const response = await api.put(`/locations/${location.id}`, {name: location.name, url: location.url});
-  return response.data;
+  return await api.put(`/locations/${location.id}`, {name: location.name, url: location.url});
 }
 
 export const useEditLocation = () => {

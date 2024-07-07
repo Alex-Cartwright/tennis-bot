@@ -35,7 +35,10 @@ password: password
 
 # Development
 To run the backend development server, use the docker-compose.yml file. To start the server, run the following command:
-docker-compose up --build
+
+[//]: # (docker-compose up --build)
+docker-compose --profile regular --build
+docker-compose --profile debug --build
 
 This will expose the backend to traffic from the local machine on port 8080.
 
@@ -105,3 +108,12 @@ cloud-sql-proxy.exe tennis-bot-427320:europe-west2:tennis-bot-postgres
 # Did I have to do this? I have a separate service account for the cloud sql proxy
 gcloud projects add-iam-policy-binding tennis-bot-427320  --member=serviceAccount:47201373461-compute@developer.gserviceaccount.com --role=roles/cloudsql.client
 
+
+# Debug
+To actually run the updated application
+mvn clean package
+[//]: # (or profile regular)
+docker-compose --profile debug down
+docker-compose --profile debug build
+docker-compose --profile debug up
+Alt + 8, attach debugger
