@@ -1,8 +1,9 @@
 package com.cartyac.tennisbot.controller;
 
-import com.cartyac.tennisbot.dto.LocationDTO;
+import com.cartyac.tennisbot.dto.location.LocationRequestDTO;
+import com.cartyac.tennisbot.dto.location.LocationResponseDTO;
 import com.cartyac.tennisbot.model.Location;
-import com.cartyac.tennisbot.service.LocationService;
+import com.cartyac.tennisbot.service.api.LocationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -26,25 +27,29 @@ public class LocationController {
         return locationService.findAll();
     }
 
+    @GetMapping("/active")
+    public List<Location> getAllActiveLocations() {
+        return locationService.findAllActive();
+    }
+
     @GetMapping("/{id}")
-    public ResponseEntity<LocationDTO> getLocationById(@PathVariable UUID id) {
+    public ResponseEntity<LocationResponseDTO> getLocationById(@PathVariable UUID id) {
         Location location = locationService.findById(id);
-        LocationDTO locationDTO = LocationDTO.map(location);
-        return ResponseEntity.ok(locationDTO);
+        return ResponseEntity.ok(new LocationResponseDTO(location));
     }
 
     @PostMapping
-    public ResponseEntity<Location> createLocation(@RequestBody Location location) {
-        location.setId(UUID.randomUUID());
+    public ResponseEntity<LocationResponseDTO> createLocation(@RequestBody LocationRequestDTO locationRequest) {
+        Location location = locationRequest.toEntity();
+        location.setActive(true);
         Location savedLocation = locationService.save(location);
-        return ResponseEntity.ok(savedLocation);
+        return ResponseEntity.ok(new LocationResponseDTO(savedLocation));
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Location> updateLocation(@PathVariable UUID id, @RequestBody Location location) {
-        location.setId(id);
-        Location updatedLocation = locationService.save(location);
-        return ResponseEntity.ok(updatedLocation);
+    public ResponseEntity<LocationResponseDTO> updateLocation(@PathVariable UUID id, @RequestBody Location location) {
+        Location updatedLocation = locationService.update(id, location);
+        return ResponseEntity.ok(new LocationResponseDTO(updatedLocation));
     }
 
     @DeleteMapping("/{id}")

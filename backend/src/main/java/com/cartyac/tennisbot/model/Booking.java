@@ -14,7 +14,7 @@ import java.util.UUID;
 @Table(name = "scheduled_bookings")
 @Data
 @Builder
-public class ScheduledBooking {
+public class Booking {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

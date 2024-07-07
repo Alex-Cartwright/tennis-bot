@@ -1,7 +1,7 @@
 package com.cartyac.tennisbot.controller;
 
 import com.cartyac.tennisbot.model.Location;
-import com.cartyac.tennisbot.service.LocationService;
+import com.cartyac.tennisbot.service.api.LocationService;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
