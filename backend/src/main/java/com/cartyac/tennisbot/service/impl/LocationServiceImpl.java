@@ -58,6 +58,8 @@ public class LocationServiceImpl implements LocationService {
         location.setName(locationUpdate.getName());
         location.setUrl(locationUpdate.getUrl());
         location.setActive(locationUpdate.isActive());
+
+        return location;
     }
 
     @Override

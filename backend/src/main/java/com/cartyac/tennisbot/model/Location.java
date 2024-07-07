@@ -26,7 +26,6 @@ public class Location {
     private boolean isActive;
 
     public Location(LocationRequestDTO locationRequestDTO) {
-        this.id = locationRequestDTO.id();
         this.name = locationRequestDTO.name();
         this.url = locationRequestDTO.url();
         isActive = true;
