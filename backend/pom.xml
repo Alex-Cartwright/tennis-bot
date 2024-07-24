@@ -75,7 +75,6 @@
 			<scope>test</scope> <!-- This ensures H2 is only available for the test classpath -->
 		</dependency>
 
-
 	</dependencies>
 
 	<build>

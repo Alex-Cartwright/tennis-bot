@@ -12,7 +12,7 @@ import java.util.List;
 import java.util.UUID;
 
 @RestController
-@RequestMapping("/scheduled_bookings")
+@RequestMapping("/bookings")
 public class BookingController {
 
     private final BookingService bookingService;

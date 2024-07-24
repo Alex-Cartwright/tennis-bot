@@ -3,7 +3,7 @@ import { ScheduledBooking } from "../../schedule/types/schedule-type";
 import { useQuery } from "react-query";
 
 export const getScheduledBookings = async (): Promise<ScheduledBooking[]> => {
-  return await api.get(`/scheduled_bookings`);
+  return await api.get(`/bookings`);
 };
 
 export const useScheduledBookings = () => {

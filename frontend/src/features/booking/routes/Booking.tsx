@@ -2,19 +2,17 @@ import { Button, FormControl, InputLabel, MenuItem, Select } from "@mui/material
 import { useState } from "react";
 import dayjs, { Dayjs } from "dayjs";
 import { useFetchLocations } from "@/features/locations/api/fetch-locations";
-import { StaticDateTimePicker } from '@mui/x-date-pickers/StaticDateTimePicker';
 import { useNavigate } from "react-router-dom";
 import { ContentLayout } from "@/components/Layout/content-layout";
 import { useRequestBooking } from "../api/request-booking";
-import { DigitalClock, renderDigitalClockTimeView } from "@mui/x-date-pickers";
+import { DateCalendar, DigitalClock } from "@mui/x-date-pickers";
 
 export const Booking = () => {
   const { locations } = useFetchLocations();
   const { mutateAsync: bookCourt } = useRequestBooking();
 
   const [locationId, setLocationId] = useState("");
-  const [date, setDate] = useState<Dayjs | null>(null);
-  const [time, setTime] = useState<number | null>(null);
+  const [date, setDate] = useState<Dayjs>(dayjs().minute(0).second(0).millisecond(0));
   const availableTimes = [10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22] //make this dynamic
 
   const navigate = useNavigate();
@@ -36,20 +34,25 @@ export const Booking = () => {
       </FormControl>
       {location && (
         <>
-          <StaticDateTimePicker
+          <DateCalendar
             value={date}
-            ampm={false}
+            onChange={(newDate) => {
+              let currentDate = date;
+              currentDate = currentDate!.day(newDate.$D)
+                .month(newDate.month())
+                .year(newDate.year())
+              setDate(currentDate)
+            }}
             minDate={dayjs().add(5, 'day')}
             maxDate={dayjs().add(1, 'year')}
-            onChange={(newDate) => {
-              setDate(newDate)
-            }}
-            viewRenderers={{
-              minutes: null,
-              hours: renderDigitalClockTimeView
+          />
+          <DigitalClock
+            onChange={(newTime) => {
+              let currentDate = date;
+              currentDate = currentDate?.hour(newTime.hour())
+              setDate(currentDate)
             }}
           />
-          <DigitalClock/>
           <Button
             onClick={() => {
               bookCourt({
