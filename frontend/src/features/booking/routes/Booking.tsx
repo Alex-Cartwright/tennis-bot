@@ -5,7 +5,7 @@ import { useFetchLocations } from "@/features/locations/api/fetch-locations";
 import { useNavigate } from "react-router-dom";
 import { ContentLayout } from "@/components/Layout/content-layout";
 import { useRequestBooking } from "../api/request-booking";
-import { DateCalendar, DigitalClock } from "@mui/x-date-pickers";
+import { DateCalendar, DigitalClock, TimeView } from "@mui/x-date-pickers";
 
 export const Booking = () => {
   const { locations } = useFetchLocations();
@@ -16,6 +16,14 @@ export const Booking = () => {
   const availableTimes = [10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22] //make this dynamic
 
   const navigate = useNavigate();
+
+  const shouldDisableTime = (value: Dayjs, view: TimeView) => {
+    const hour = value.hour();
+    if (view === 'hours') {
+      return !availableTimes.includes(hour);
+    }
+    return false;
+  };
 
   return (
     <ContentLayout title="Book A Court" subtitle="Schedule court bookings here">
@@ -38,7 +46,7 @@ export const Booking = () => {
             value={date}
             onChange={(newDate) => {
               let currentDate = date;
-              currentDate = currentDate!.day(newDate.$D)
+              currentDate = currentDate!.date(newDate.date())
                 .month(newDate.month())
                 .year(newDate.year())
               setDate(currentDate)
@@ -47,6 +55,9 @@ export const Booking = () => {
             maxDate={dayjs().add(1, 'year')}
           />
           <DigitalClock
+            timeStep={60}
+            skipDisabled
+            shouldDisableTime={shouldDisableTime}
             onChange={(newTime) => {
               let currentDate = date;
               currentDate = currentDate?.hour(newTime.hour())

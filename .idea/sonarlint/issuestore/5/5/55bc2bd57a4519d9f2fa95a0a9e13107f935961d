@@ -1,40 +1,42 @@
 
 ~
-java:S1141“"5Extract this nested try block into a separate method.(¡»¢üùÿÿÿÿ8Ñ°Æ£Œ2J$fda6180d-8cb7-4ca3-bdbc-cfd386758d25
+java:S1141¢"5Extract this nested try block into a separate method.(¡»¢üùÿÿÿÿ8€‹İ›2J$ac979332-6701-451a-8faf-e0e3b7824e73
 ~
-java:S1141­"5Extract this nested try block into a separate method.(¡»¢üùÿÿÿÿ8Ñ°Æ£Œ2J$e91c3469-4e5e-46a0-949d-9563f37050f9
-‰	java:S112†"FDefine and throw a dedicated exception instead of using a generic one.(Çì×¨8Ò°Æ£Œ2J$995e1b66-296d-4d7d-952a-e0ea8be77ee7
+java:S1141À"5Extract this nested try block into a separate method.(¡»¢üùÿÿÿÿ8€‹İ›2J$bdb52a0c-60ce-4d30-8282-c36b7d1c9070
+
+java:S2259ğ"LA "NullPointerException" could be thrown; "paymentDetails" is nullable here.(îö¾8Æ’‘œ2J$9c2064fb-7296-49ab-9566-bf6e41c0a2e2
+‰	java:S112"FDefine and throw a dedicated exception instead of using a generic one.(Çì×¨8€‹İ›2J$c36ff733-9e18-4bdd-aee3-384dc25adc93
 ‰
-java:S1075$"ARefactor your code to get this URI from a customizable parameter.(ğ«–¢üÿÿÿÿ8Ø°Æ£Œ2J$e32b8dbc-f6fe-4bf8-bd4e-da1d38d374b6
-r	java:S1061"+Replace this use of System.out by a logger.(ö¶ñ»úÿÿÿÿ8Ù°Æ£Œ2J$2c3e0408-737b-483c-8af4-b770124e82d9
-r	java:S1066"+Replace this use of System.out by a logger.(ç…Ù´ıÿÿÿÿ8Ú°Æ£Œ2J$217034e7-45ce-428d-b0ce-b68563f8f628
-r	java:S106L"+Replace this use of System.out by a logger.(ãñÕ´ıÿÿÿÿ8à°Æ£Œ2J$5bef1274-d303-48ea-920a-9f4939ce6a4b
-r	java:S106]"+Replace this use of System.out by a logger.(Âä Êùÿÿÿÿ8á°Æ£Œ2J$8c4be919-f101-4b5f-97c5-d2e54bf25ec0
-m	java:S106_"+Replace this use of System.out by a logger.(Ú†ê‚8á°Æ£Œ2J$037ba6cd-a44e-4ea3-b904-88d1ed0b39fb
-m	java:S106"+Replace this use of System.out by a logger.(ô×’©8å°Æ£Œ2J$f263bd1b-4354-46a1-b158-022892b0531b
-m	java:S106‚"+Replace this use of System.out by a logger.(¦Œãf8å°Æ£Œ2J$7e2acce6-10b7-4b89-93e3-0331edf2a707
-s	java:S106´"+Replace this use of System.out by a logger.(Üê§öøÿÿÿÿ8é°Æ£Œ2J$e87426cb-3588-44ac-8e9a-a8b2cf2fa529
-n	java:S106¼"+Replace this use of System.out by a logger.(Ú†ê‚8é°Æ£Œ2J$65295b1b-ef17-432c-aa38-ae36ff1819e5
-„	java:S125Î"<This block of commented-out lines of code should be removed.(½µÌŸøÿÿÿÿ8ì°Æ£Œ2J$2d10910b-7778-47d8-a9c3-cb6e1a4d9ead
-K
-java:S1128".Remove this unused import 'jnr.a64asm.Offset'.(Ãİë¶8ñËù£Œ2
-N
-java:S1128",Remove this unused import 'org.jsoup.Jsoup'.(Ù±šªûÿÿÿÿ8òËù£Œ2
-R
-java:S1128"5Remove this unused import 'org.jsoup.nodes.Document'.(ô¯É8òËù£Œ2
-S
-java:S1128"6Remove this unused import 'org.jsoup.select.Elements'.(ëÂè8òËù£Œ2
-V
-java:S1128"4Remove this unused import 'java.time.LocalDateTime'.(æÃ§ƒüÿÿÿÿ8òËù£Œ2
-M
-java:S1128"0Remove this unused import 'java.util.ArrayList'.(÷‰îƒ8òËù£Œ2
-M
-java:S1128"+Remove this unused import 'java.util.List'.(Õë±Äøÿÿÿÿ8òËù£Œ2
-h
-java:S1128"FRemove this unused import 'java.util.concurrent.atomic.AtomicBoolean'.(§­‹¼üÿÿÿÿ8òËù£Œ2
+java:S1075/"ARefactor your code to get this URI from a customizable parameter.(ğ«–¢üÿÿÿÿ8„‹İ›2J$d7b04eba-a6ed-472c-a550-93013e66abab
+¢
+java:S2142Ğ"^Either re-interrupt this method or rethrow the "InterruptedException" that can be caught here.(”ı¾8‹İ›2J$5b3efd05-010e-4f60-bf47-50ed6bfed72e
+‰
+java:S1854ì"@Remove this useless assignment to local variable "payNowButton".(¥ˆ¥Ñıÿÿÿÿ8èˆœ2J$c4705ce6-c54c-4e4c-a9bb-d78f8f588734
+µ
+java:S1130æ"lRemove the declaration of thrown exception 'java.io.IOException', as it cannot be thrown from method's body.(³˜¦¦ÿÿÿÿÿ8•Ä¹œ2J$dee2cdb8-2af3-411c-9619-7ad6c0e36165
+z
+java:S1481ì"1Remove this unused "payNowButton" local variable.(¥ˆ¥Ñıÿÿÿÿ8¸‡‰œ2J$ce428a02-f480-4919-bc71-be9d2241d6be
+	java:S125ò"<This block of commented-out lines of code should be removed.(Ú¹ÈÈ8åøœ2J$a017c9bb-f719-4f6b-8d73-61b9dabae781
+„	java:S125®"<This block of commented-out lines of code should be removed.(½µÌŸøÿÿÿÿ8 ‹İ›2J$a67a64d3-825e-458e-9f3c-acc7557c29f3
+q
+java:S1128	".Remove this unused import 'jnr.a64asm.Offset'.(Ãİë¶8ğ’‘œ2J$ee891b9b-8e76-4443-8af4-805514d24ab9
+t
+java:S1128",Remove this unused import 'org.jsoup.Jsoup'.(Ù±šªûÿÿÿÿ8ğ’‘œ2J$cda7adaf-5d8a-4440-b4aa-1c7954f2ca59
 x
-java:S1068#"0Remove this unused "CHECKOUT_URL" private field.(ÙÖêòøÿÿÿÿ8ì°Æ£Œ2J$316de6f7-a32f-4c48-b9a9-99cf722e3ff6
+java:S1128"5Remove this unused import 'org.jsoup.nodes.Document'.(ô¯É8ğ’‘œ2J$48ee8601-baae-4079-9177-cacf443f4fd9
+y
+java:S1128"6Remove this unused import 'org.jsoup.select.Elements'.(ëÂè8ğ’‘œ2J$d5487eda-4146-4d77-9ef4-ee6b111bfa2f
+t
+java:S1128",Remove this unused import 'java.io.IOError'.(ƒ¾Ğ§øÿÿÿÿ8ğ’‘œ2J$eebaf353-2c78-468c-add9-ee3a769b59cc
+|
+java:S1128 "4Remove this unused import 'java.time.LocalDateTime'.(æÃ§ƒüÿÿÿÿ8ğ’‘œ2J$3af75ed9-d9f6-4ed4-b389-8e38012f439b
+s
+java:S1128#"0Remove this unused import 'java.util.ArrayList'.(÷‰îƒ8ğ’‘œ2J$1cabc571-97b7-4bc7-98a2-d78ced4fa8fa
+s
+java:S1128$"+Remove this unused import 'java.util.List'.(Õë±Äøÿÿÿÿ8ğ’‘œ2J$89017e33-9d02-4972-8261-3bb9cc391c15
+
+java:S1128&"FRemove this unused import 'java.util.concurrent.atomic.AtomicBoolean'.(§­‹¼üÿÿÿÿ8ğ’‘œ2J$b7508c13-cff2-4b97-a82c-8446225247a6
 r
-java:S1068%"/Remove this unused "TARGET_FILE" private field.(©å‡Ú8ì°Æ£Œ2J$67663f59-a773-41d1-8c77-c870dba02016
+java:S10680"/Remove this unused "TARGET_FILE" private field.(©å‡Ú8 ‹İ›2J$b7963ec2-c14a-45c9-967a-47c0789932e3
 n
-java:S1068+"+Remove this unused "cookies" private field.(†ô¢Æ8ì°Æ£Œ2J$81f12df3-703e-4ae7-af3c-8bdd0607dd3e
+java:S10688"+Remove this unused "cookies" private field.(†ô¢Æ8 ‹İ›2J$dba95d79-e700-42c0-a3d9-b8ac30130e06
